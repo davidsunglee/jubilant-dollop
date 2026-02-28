@@ -37,16 +37,15 @@ extension GameScene {
     // MARK: - macOS Keyboard Input
     #if os(macOS)
     override func keyDown(with event: NSEvent) {
+        // Intentionally do not call super to suppress macOS beep on unhandled keys
         guard isGameActive else { return }
         guard let chars = event.charactersIgnoringModifiers?.lowercased() else { return }
 
         if router.config.playerCount == 1 {
-            // Space bar for single player
             if chars == " " {
                 handleJump(forPlayer: 1)
             }
         } else {
-            // 2P: "a" = P1, "l" = P2
             switch chars {
             case "a":
                 handleJump(forPlayer: 1)

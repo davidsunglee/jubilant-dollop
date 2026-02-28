@@ -80,7 +80,7 @@ class CharacterRenderer {
         guard let uiImage = UIImage(systemName: symbolName, withConfiguration: config) else { return nil }
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: symbolSize.width, height: symbolSize.height))
         let renderedImage = renderer.image { context in
-            uiImage.withTintColor(.white, renderingMode: .alwaysOriginal)
+            uiImage.withTintColor(.white, renderingMode: .alwaysTemplate)
                 .draw(in: CGRect(origin: .zero, size: symbolSize))
         }
         let texture = SKTexture(image: renderedImage)
