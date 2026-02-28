@@ -12,10 +12,13 @@ class AudioManager {
     func playBGM() {
         guard let url = Bundle.main.url(forResource: "bgm", withExtension: "wav") else { return }
         do {
-            bgmPlayer = try AVAudioPlayer(contentsOf: url)
-            bgmPlayer?.numberOfLoops = -1
-            bgmPlayer?.volume = 0.3
-            bgmPlayer?.play()
+            let player = try AVAudioPlayer(contentsOf: url)
+            // Skip placeholder stubs — looping a tiny file produces constant beeping
+            guard player.duration > 1.0 else { return }
+            player.numberOfLoops = -1
+            player.volume = 0.3
+            player.play()
+            bgmPlayer = player
         } catch {
             print("BGM playback error: \(error)")
         }

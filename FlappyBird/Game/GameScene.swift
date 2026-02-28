@@ -7,14 +7,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var parallaxBackground: ParallaxBackground?
     var lastUpdateTime: TimeInterval = 0
     var isGameActive: Bool = false
+    private var isSetup: Bool = false
 
     // Tuning constants
-    let gravity: CGFloat = -9.8
+    let gravity: CGFloat = -5.0
     let pipeSpeed: CGFloat = 150
     let pipeSpawnInterval: TimeInterval = 2.0
     let pipeWidth: CGFloat = 60
     let gapHeight: CGFloat = 180
-    let jumpImpulse: CGFloat = 450
+    let jumpImpulse: CGFloat = 300
 
     // Scored pipe tracking (to prevent double-counting)
     var scoredPipes: Set<SKNode> = []
@@ -33,6 +34,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Scene Lifecycle
 
     override func didMove(to view: SKView) {
+        setupScene()
+
+        #if os(iOS)
+        view.isMultipleTouchEnabled = true
+        #endif
+
+        #if os(macOS)
+        DispatchQueue.main.async {
+            view.window?.makeFirstResponder(self)
+        }
+        #endif
+    }
+
+    override func didChangeSize(_ oldSize: CGSize) {
+        guard size.width > 0, size.height > 0 else { return }
+        setupScene()
+    }
+
+    private func setupScene() {
+        guard !isSetup else { return }
+        guard size.width > 0, size.height > 0 else { return }
+        isSetup = true
+
+        removeAllChildren()
+        removeAllActions()
+        players.removeAll()
+        scoredPipes.removeAll()
+        lastUpdateTime = 0
+
         setupWorld()
         setupPlayers()
         setupBackground()
@@ -40,30 +70,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         startSpawning()
         isGameActive = true
         AudioManager.shared.playBGM()
-
-        #if os(iOS)
-        view.isMultipleTouchEnabled = true
-        #endif
-    }
-
-    override func didChangeSize(_ oldSize: CGSize) {
-        guard size.width > 0, size.height > 0 else { return }
-        if oldSize == .zero {
-            // First real size received after scene is presented
-            removeAllChildren()
-            removeAllActions()
-            players.removeAll()
-            scoredPipes.removeAll()
-            lastUpdateTime = 0
-
-            setupWorld()
-            setupPlayers()
-            setupBackground()
-            setupBoundaries()
-            startSpawning()
-            isGameActive = true
-            AudioManager.shared.playBGM()
-        }
     }
 
     // MARK: - Setup
@@ -220,6 +226,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if players.allSatisfy({ !$0.isAlive }) {
                 isGameActive = false
                 removeAllActions()
+                scoredPipes.removeAll()
                 AudioManager.shared.stopBGM()
             }
         }

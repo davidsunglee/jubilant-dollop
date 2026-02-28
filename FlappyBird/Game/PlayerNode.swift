@@ -35,11 +35,11 @@ class PlayerNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func jump(impulse: CGFloat = 450) {
+    func jump(impulse: CGFloat = 300) {
         guard isAlive else { return }
-        // Reset vertical velocity before applying impulse (prevents momentum accumulation)
-        physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse))
+        // Set velocity directly instead of applyImpulse so behavior is consistent
+        // regardless of physics body mass (which varies by character size)
+        physicsBody?.velocity = CGVector(dx: 0, dy: impulse)
     }
 
     func die() {
@@ -48,9 +48,19 @@ class PlayerNode: SKNode {
         physicsBody?.contactTestBitMask = PhysicsCategory.none
         physicsBody?.collisionBitMask = PhysicsCategory.boundary
 
-        // Death visual: fade and tint red
-        let fadeAction = SKAction.fadeAlpha(to: 0.4, duration: 0.3)
+        // Death visual: fade self and colorize child sprite nodes
+        run(SKAction.fadeAlpha(to: 0.4, duration: 0.3))
+
         let colorize = SKAction.colorize(with: .red, colorBlendFactor: 0.5, duration: 0.3)
-        run(SKAction.group([fadeAction, colorize]))
+        enumerateChildNodes(withName: "//.", using: { node, _ in
+            if let sprite = node as? SKSpriteNode {
+                sprite.run(colorize)
+            }
+        })
+
+        // Stop wing animation
+        if let wing = childNode(withName: ".//wing") {
+            wing.removeAllActions()
+        }
     }
 }

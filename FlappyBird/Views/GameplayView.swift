@@ -122,8 +122,11 @@ struct GameplayView: View {
     }
 
     private func createScene() {
-        let newScene = GameScene(router: router)
-        newScene.scaleMode = .resizeFill
-        scene = newScene
+        scene = nil
+        DispatchQueue.main.async {
+            let newScene = GameScene(router: router)
+            newScene.scaleMode = .resizeFill
+            scene = newScene
+        }
     }
 }
