@@ -214,20 +214,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AudioManager.shared.playScoreSound(on: self)
 
         } else if otherCategory == PhysicsCategory.obstacle || otherCategory == PhysicsCategory.boundary {
-            // Death
-            playerNode.die()
+            guard !playerNode.isInvincible else { return }
+
+            let survived = router.playerHit(playerNode.playerIndex)
             AudioManager.shared.playCollisionSound(on: self)
 
-            DispatchQueue.main.async { [weak self] in
-                self?.router.playerDied(playerNode.playerIndex)
-            }
+            if survived {
+                playerNode.hit()
+            } else {
+                playerNode.die()
 
-            // Check if all players dead
-            if players.allSatisfy({ !$0.isAlive }) {
-                isGameActive = false
-                removeAllActions()
-                scoredPipes.removeAll()
-                AudioManager.shared.stopBGM()
+                // Check if all players dead
+                if players.allSatisfy({ !$0.isAlive }) {
+                    isGameActive = false
+                    removeAllActions()
+                    scoredPipes.removeAll()
+                    AudioManager.shared.stopBGM()
+                }
             }
         }
     }
