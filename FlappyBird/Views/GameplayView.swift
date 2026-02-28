@@ -36,20 +36,29 @@ struct GameplayView: View {
         VStack {
             HStack {
                 if router.config.playerCount == 2 {
-                    Text("P1: \(router.scores[0])")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 2)
+                    VStack(spacing: 4) {
+                        Text("P1: \(router.scores[0])")
+                            .font(.system(size: 32, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 2)
+                        livesDisplay(count: router.lives[0])
+                    }
                     Spacer()
-                    Text("P2: \(router.scores[1])")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 2)
+                    VStack(spacing: 4) {
+                        Text("P2: \(router.scores[1])")
+                            .font(.system(size: 32, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 2)
+                        livesDisplay(count: router.lives[1])
+                    }
                 } else {
-                    Text("\(router.scores[0])")
-                        .font(.system(size: 48, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 2)
+                    VStack(spacing: 4) {
+                        Text("\(router.scores[0])")
+                            .font(.system(size: 48, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 2)
+                        livesDisplay(count: router.lives[0])
+                    }
                 }
             }
             .padding(.horizontal, 40)
@@ -76,6 +85,7 @@ struct GameplayView: View {
                             Text("\(router.scores[0])")
                                 .font(.system(size: 36, weight: .bold))
                                 .foregroundStyle(.white)
+                            livesDisplay(count: router.lives[0])
                         }
                         VStack {
                             Text("Player 2")
@@ -84,12 +94,16 @@ struct GameplayView: View {
                             Text("\(router.scores[1])")
                                 .font(.system(size: 36, weight: .bold))
                                 .foregroundStyle(.white)
+                            livesDisplay(count: router.lives[1])
                         }
                     }
                 } else {
-                    Text("Score: \(router.scores[0])")
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.white)
+                    VStack(spacing: 4) {
+                        Text("Score: \(router.scores[0])")
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundStyle(.white)
+                        livesDisplay(count: router.lives[0])
+                    }
                 }
 
                 HStack(spacing: 20) {
@@ -118,6 +132,30 @@ struct GameplayView: View {
                     .buttonStyle(.plain)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private func livesDisplay(count: Int) -> some View {
+        if count <= 10 {
+            HStack(spacing: 2) {
+                ForEach(0..<count, id: \.self) { _ in
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 16))
+                        .foregroundStyle(.red)
+                }
+            }
+            .shadow(color: .black, radius: 1)
+        } else {
+            HStack(spacing: 2) {
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 16))
+                    .foregroundStyle(.red)
+                Text("x\(count)")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+            }
+            .shadow(color: .black, radius: 1)
         }
     }
 
