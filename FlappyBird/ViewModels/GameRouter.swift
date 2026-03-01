@@ -15,6 +15,14 @@ class GameRouter: ObservableObject {
         state = .characterSelection
     }
 
+    func goBackToTitle() {
+        state = .title
+    }
+
+    func goBackToCharacterSelection() {
+        state = .characterSelection
+    }
+
     func selectCharacter(_ character: GameCharacter, forPlayer player: Int) {
         if player == 1 {
             config.player1Character = character
@@ -29,7 +37,6 @@ class GameRouter: ObservableObject {
 
     func selectEnvironment(_ environment: GameEnvironment) {
         config.environment = environment
-        startGame()
     }
 
     func startGame() {

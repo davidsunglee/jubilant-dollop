@@ -4,14 +4,19 @@ struct CharacterSelectionView: View {
     @ObservedObject var router: GameRouter
     @State private var player1Selection: GameCharacter = .avian
     @State private var player2Selection: GameCharacter = .bat
+    @State private var headerVisible = false
+    @State private var cardsVisible = false
 
     var body: some View {
         ZStack {
-            Color.cyan.opacity(0.3).ignoresSafeArea()
+            MenuBackgroundView(tint: .cool)
 
             VStack(spacing: 20) {
                 Text("Select Character\(router.config.playerCount == 2 ? "s" : "")")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundStyle(.primary)
+                    .offset(y: headerVisible ? 0 : -15)
+                    .opacity(headerVisible ? 1 : 0)
 
                 if router.config.playerCount == 2 {
                     HStack(spacing: 30) {
@@ -19,8 +24,10 @@ struct CharacterSelectionView: View {
                         Divider().frame(height: 300)
                         characterPicker(title: "Player 2", selection: $player2Selection)
                     }
+                    .opacity(cardsVisible ? 1 : 0)
                 } else {
                     characterPicker(title: "Player 1", selection: $player1Selection)
+                        .opacity(cardsVisible ? 1 : 0)
                 }
 
                 Button {
@@ -31,18 +38,34 @@ struct CharacterSelectionView: View {
                     router.confirmCharacterSelection()
                 } label: {
                     Text("Continue")
-                        .font(.title2.bold())
-                        .frame(width: 200, height: 50)
-                        .background(.green)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(GlassButtonStyle(accentColor: .green))
+                .opacity(cardsVisible ? 1 : 0)
             }
             .padding()
+
+            // Back button
+            VStack {
+                HStack {
+                    BackButton { router.goBackToTitle() }
+                    Spacer()
+                }
+                .padding()
+                Spacer()
+            }
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .characterSelection)
+            withAnimation(.easeOut(duration: 0.4)) {
+                headerVisible = true
+            }
+            withAnimation(.easeOut(duration: 0.5).delay(0.15)) {
+                cardsVisible = true
+            }
+        }
+        .onDisappear {
+            headerVisible = false
+            cardsVisible = false
         }
     }
 
@@ -59,7 +82,9 @@ struct CharacterSelectionView: View {
                 ForEach(GameCharacter.allCases) { character in
                     characterCard(character: character, isSelected: selection.wrappedValue == character)
                         .onTapGesture {
-                            selection.wrappedValue = character
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                selection.wrappedValue = character
+                            }
                         }
                 }
             }
@@ -83,7 +108,6 @@ struct CharacterSelectionView: View {
                         .frame(width: 60, height: 60)
                     #endif
                 } else {
-                    // Fallback
                     Rectangle()
                         .fill(Color(character.color))
                         .frame(width: 60, height: 60)
@@ -96,11 +120,14 @@ struct CharacterSelectionView: View {
                 .minimumScaleFactor(0.7)
         }
         .frame(width: 100, height: 100)
-        .background(isSelected ? Color.blue.opacity(0.2) : Color.white.opacity(0.5))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
         .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 3)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.clear, lineWidth: 0)
         )
+        .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.clear, radius: 12)
+        .scaleEffect(isSelected ? 1.05 : 1.0)
     }
 }
