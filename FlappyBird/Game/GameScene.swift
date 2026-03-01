@@ -75,7 +75,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Setup
 
     private func setupWorld() {
-        backgroundColor = router.config.environment.backgroundColor
         physicsWorld.gravity = CGVector(dx: 0, dy: gravity)
         physicsWorld.contactDelegate = self
     }
@@ -115,12 +114,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func setupBackground() {
-        parallaxBackground = ParallaxBackground(
-            color: router.config.environment.groundColor,
-            size: CGSize(width: size.width, height: 40),
-            scrollSpeed: pipeSpeed,
-            parent: self
-        )
+        let renderer = router.config.environment.renderer
+        parallaxBackground = ParallaxBackground(baseSpeed: pipeSpeed)
+
+        // Build background layers (gradient sky, scenery, animated elements)
+        renderer.buildBackground(scene: self, size: size, parallax: parallaxBackground!)
+
+        // Build ground as a parallax layer (1.0x speed, synced with obstacles)
+        let groundSize = CGSize(width: size.width, height: 40)
+        var groundNodes: [SKNode] = []
+        for i in 0..<2 {
+            let groundTile = renderer.buildGroundTile(size: groundSize)
+            groundTile.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+            groundTile.zPosition = 2
+            addChild(groundTile)
+            groundNodes.append(groundTile)
+        }
+        parallaxBackground?.addLayer(nodes: groundNodes, speedMultiplier: 1.0, width: size.width)
     }
 
     private func setupBoundaries() {
