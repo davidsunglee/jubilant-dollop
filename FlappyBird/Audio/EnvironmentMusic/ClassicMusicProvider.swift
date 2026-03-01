@@ -1,4 +1,6 @@
 import AudioKit
+import Foundation
+import SoundpipeAudioKit
 
 class ClassicMusicProvider: EnvironmentMusicProvider {
     private var melodyOsc: Oscillator?

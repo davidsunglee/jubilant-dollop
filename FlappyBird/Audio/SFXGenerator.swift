@@ -1,5 +1,7 @@
 import AudioKit
+import AudioKitEX
 import AVFoundation
+import SoundpipeAudioKit
 
 class SFXGenerator {
     static let shared = SFXGenerator()

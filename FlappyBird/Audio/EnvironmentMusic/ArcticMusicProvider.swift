@@ -1,4 +1,6 @@
 import AudioKit
+import Foundation
+import SoundpipeAudioKit
 
 class ArcticMusicProvider: EnvironmentMusicProvider {
     private var bellOsc: Oscillator?

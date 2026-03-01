@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E70833C0D6D60A6374FA2 /* GameplayView.swift */; };
 		0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42140252FA00D849A425CFDA /* CharacterSelectionView.swift */; };
+		068BA9F9AAFB7E51FC0FEBDC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */; };
 		093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
 		0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
 		0B50B8AD5C3A2C22864668FA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3202C35D079424FCF1F8EF /* GameScene.swift */; };
@@ -70,6 +71,7 @@
 		B30B3623FBBDCDB336E6E5F0 /* EnvironmentMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */; };
 		B43BB20E535E048F75A50E1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC427936D543BD726587CE /* AudioManager.swift */; };
 		C1FD3D385AAF68707D89D98E /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */; };
+		C8FC96A642C86082E2E01EF6 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAD2671AD0AAEB675162E1E8 /* SoundpipeAudioKit */; };
 		C9535D52A4607219D41FC91E /* SFXGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */; };
 		C9FA819FD45FDF6B5C6F3621 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB35EAA464689B518E9A455 /* ObstacleNode.swift */; };
 		CDD82A42135F4B6B834E8421 /* GameScene+Spawning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */; };
@@ -139,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2EFA03B7AFE80A330F0B85 /* AudioKit in Frameworks */,
+				068BA9F9AAFB7E51FC0FEBDC /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F5383CA13CCC423D28605FD /* AudioKit in Frameworks */,
+				C8FC96A642C86082E2E01EF6 /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 			name = "FlappyBird-iOS";
 			packageProductDependencies = (
 				68245BA54677E635FE9FC900 /* AudioKit */,
+				EAD2671AD0AAEB675162E1E8 /* SoundpipeAudioKit */,
 			);
 			productName = "FlappyBird-iOS";
 			productReference = 528062AAD813524B890C77D6 /* FlappyBird-iOS.app */;
@@ -326,6 +331,7 @@
 			name = "FlappyBird-macOS";
 			packageProductDependencies = (
 				DEEBB6D2BB6A55A216ECE864 /* AudioKit */,
+				1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */,
 			);
 			productName = "FlappyBird-macOS";
 			productReference = 916AB48ED9A451AF29BC665D /* FlappyBird-macOS.app */;
@@ -352,6 +358,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				FD9739122D382B250A8A7F6B /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
@@ -728,9 +735,22 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		FD9739122D382B250A8A7F6B /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD9739122D382B250A8A7F6B /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
 		68245BA54677E635FE9FC900 /* AudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */;
@@ -740,6 +760,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */;
 			productName = AudioKit;
+		};
+		EAD2671AD0AAEB675162E1E8 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD9739122D382B250A8A7F6B /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

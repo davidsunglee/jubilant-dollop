@@ -1,4 +1,6 @@
 import AudioKit
+import Foundation
+import SoundpipeAudioKit
 
 class SpaceMusicProvider: EnvironmentMusicProvider {
     private var padOsc: Oscillator?
