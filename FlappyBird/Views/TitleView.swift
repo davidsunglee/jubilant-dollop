@@ -2,47 +2,51 @@ import SwiftUI
 
 struct TitleView: View {
     @ObservedObject var router: GameRouter
+    @State private var titleVisible = false
+    @State private var buttonsVisible = false
 
     var body: some View {
         ZStack {
-            Color.cyan.ignoresSafeArea()
+            MenuBackgroundView(tint: .neutral)
 
             VStack(spacing: 40) {
-
                 Text("Flappy Bird")
-                    .font(.system(size: 48, weight: .bold, design: .rounded))
+                    .font(.system(size: 56, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
+                    .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 3)
+                    .offset(y: titleVisible ? 0 : 20)
+                    .opacity(titleVisible ? 1 : 0)
 
                 VStack(spacing: 20) {
                     Button {
                         router.selectPlayerCount(1)
                     } label: {
                         Text("1 Player")
-                            .font(.title2.bold())
-                            .frame(width: 200, height: 50)
-                            .background(.green)
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(GlassButtonStyle(accentColor: .green))
 
                     Button {
                         router.selectPlayerCount(2)
                     } label: {
                         Text("2 Players")
-                            .font(.title2.bold())
-                            .frame(width: 200, height: 50)
-                            .background(.orange)
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(GlassButtonStyle(accentColor: .orange))
                 }
+                .opacity(buttonsVisible ? 1 : 0)
             }
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .title)
+            withAnimation(.easeOut(duration: 0.6)) {
+                titleVisible = true
+            }
+            withAnimation(.easeOut(duration: 0.5).delay(0.2)) {
+                buttonsVisible = true
+            }
+        }
+        .onDisappear {
+            titleVisible = false
+            buttonsVisible = false
         }
     }
 }
