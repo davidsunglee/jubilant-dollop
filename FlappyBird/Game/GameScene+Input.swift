@@ -9,7 +9,7 @@ extension GameScene {
         let player = players[playerIndex - 1]
         guard player.isAlive else { return }
         player.jump(impulse: jumpImpulse)
-        AudioManager.shared.playFlapSound(on: self)
+        AudioManager.shared.playFlapSound()
     }
 
     // MARK: - iOS / iPadOS Touch Input

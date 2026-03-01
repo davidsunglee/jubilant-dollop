@@ -27,6 +27,9 @@ struct EnvironmentSelectionView: View {
                 .padding()
             }
         }
+        .onAppear {
+            AudioManager.shared.playMenuMusic(forState: .environmentSelection)
+        }
     }
 
     private func environmentCard(environment: GameEnvironment) -> some View {
