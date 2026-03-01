@@ -66,10 +66,26 @@ struct CharacterSelectionView: View {
 
     private func characterCard(character: GameCharacter, isSelected: Bool) -> some View {
         VStack(spacing: 6) {
-            Image(systemName: character.sfSymbolName)
-                .font(.system(size: 32))
-                .frame(width: 60, height: 60)
-                .foregroundStyle(Color(character.color))
+            Group {
+                if let image = CharacterRenderer.renderToImage(for: character, size: CGSize(width: 60, height: 60)) {
+                    #if os(iOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .interpolation(.high)
+                        .frame(width: 60, height: 60)
+                    #elseif os(macOS)
+                    Image(nsImage: image)
+                        .resizable()
+                        .interpolation(.high)
+                        .frame(width: 60, height: 60)
+                    #endif
+                } else {
+                    // Fallback
+                    Rectangle()
+                        .fill(Color(character.color))
+                        .frame(width: 60, height: 60)
+                }
+            }
 
             Text(character.displayName)
                 .font(.caption.bold())
