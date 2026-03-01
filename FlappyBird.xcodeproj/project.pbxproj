@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E70833C0D6D60A6374FA2 /* GameplayView.swift */; };
 		0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42140252FA00D849A425CFDA /* CharacterSelectionView.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F3 /* LiveCharacterPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F4 /* LiveCharacterPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */; };
 		068BA9F9AAFB7E51FC0FEBDC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */; };
 		093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
 		0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
@@ -123,6 +125,7 @@
 		93A464C9E14D2A6A370FDEB0 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		97CD20503913CB47CA00DCFC /* MusicEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEngine.swift; sourceTree = "<group>"; };
 		9BD39CCB31E1DACD34EB9C7F /* EnvironmentMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentMusicProvider.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCharacterPreview.swift; sourceTree = "<group>"; };
 		B0239F12777A68F98E6193C6 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		B04A6A52C66E7F6A39F565FF /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		B735E24AE07431ADAF4E955F /* GameScene+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Input.swift"; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				8500681CEC752EA6E5EA90D7 /* EnvironmentSelectionView.swift */,
 				105E70833C0D6D60A6374FA2 /* GameplayView.swift */,
 				BB22222222222222BBBBBBBB /* GlassButtonStyle.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */,
 				DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */,
 				B04A6A52C66E7F6A39F565FF /* TitleView.swift */,
 			);
@@ -406,6 +410,7 @@
 				B43BB20E535E048F75A50E1A /* AudioManager.swift in Sources */,
 				2AB714376974DC49BEBCA554 /* CharacterRenderer.swift in Sources */,
 				FE77F5EA63863AD7E4044D58 /* CharacterSelectionView.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F3 /* LiveCharacterPreview.swift in Sources */,
 				25606A0AF462A7C03662CDD9 /* ClassicEnvironmentRenderer.swift in Sources */,
 				F32D09031F597EBCA17036A2 /* ClassicMusicProvider.swift in Sources */,
 				9E4772BD35E4CE368B3A87B9 /* ContentView.swift in Sources */,
@@ -453,6 +458,7 @@
 				62C0A8437F7E6A7E6C1E7F8A /* AudioManager.swift in Sources */,
 				66A4DD723957318F554D4D73 /* CharacterRenderer.swift in Sources */,
 				0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F4 /* LiveCharacterPreview.swift in Sources */,
 				EFAAA889E98C50AF014853AD /* ClassicEnvironmentRenderer.swift in Sources */,
 				6BA0180BCDCBC786FA2EF1AB /* ClassicMusicProvider.swift in Sources */,
 				A82B8D389D09B88AE77EFF01 /* ContentView.swift in Sources */,
