@@ -19,7 +19,6 @@ struct EnvironmentSelectionView: View {
 
                 LazyVGrid(columns: [
                     GridItem(.flexible()),
-                    GridItem(.flexible()),
                     GridItem(.flexible())
                 ], spacing: 16) {
                     ForEach(GameEnvironment.allCases) { environment in
@@ -75,32 +74,13 @@ struct EnvironmentSelectionView: View {
 
     private func environmentCard(environment: GameEnvironment, isSelected: Bool) -> some View {
         VStack(spacing: 8) {
-            Group {
-                if let image = EnvironmentPreviewRenderer.renderToImage(for: environment, size: CGSize(width: 160, height: 80)) {
-                    #if os(iOS)
-                    Image(uiImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                    #elseif os(macOS)
-                    Image(nsImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                    #endif
-                } else {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(environment.backgroundColor))
-                        .frame(height: 80)
-                }
-            }
+            LiveEnvironmentPreview(environment: environment)
 
             Text(environment.displayName)
                 .font(.headline)
         }
-        .frame(width: 160, height: 130)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
