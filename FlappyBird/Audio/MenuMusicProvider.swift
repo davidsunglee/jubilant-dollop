@@ -99,7 +99,7 @@ class MenuMusicProvider {
         bassOsc = Oscillator(waveform: Table(.triangle))
         bassOsc?.amplitude = 0
         let l1m = Mixer([melodyOsc!, bassOsc!])
-        l1m.volume = 0.25
+        l1m.volume = 0.15
         layer1Mixer = l1m
 
         // Layer 2: Harmony (triangle) + Percussion (noise)
@@ -151,9 +151,9 @@ class MenuMusicProvider {
             let fraction = Float(i) / Float(steps)
             DispatchQueue.main.asyncAfter(deadline: .now() + fadeDuration * Double(i) / Double(steps)) { [weak self] in
                 guard let self = self else { return }
-                self.layer1Mixer?.volume = targetLayer >= 1 ? 0.25 * fraction : 0.25 * (1 - fraction)
-                self.layer2Mixer?.volume = targetLayer >= 2 ? 0.2 * fraction : 0.2 * (1 - fraction)
-                self.layer3Mixer?.volume = targetLayer >= 3 ? 0.15 * fraction : 0.15 * (1 - fraction)
+                self.layer1Mixer?.volume = targetLayer >= 1 ? 0.15 * fraction : 0.15 * (1 - fraction)
+                self.layer2Mixer?.volume = targetLayer >= 2 ? 0.12 * fraction : 0.12 * (1 - fraction)
+                self.layer3Mixer?.volume = targetLayer >= 3 ? 0.09 * fraction : 0.09 * (1 - fraction)
             }
         }
     }
