@@ -302,16 +302,78 @@ class CharacterRenderer {
 
     // MARK: - Winged Turtle
     private static func buildWingedTurtle(in container: SKNode) {
-        let body = SKShapeNode(circleOfRadius: 17)
-        body.fillColor = .green
-        body.strokeColor = SKColor(red: 0.0, green: 0.5, blue: 0.0, alpha: 1)
-        body.lineWidth = 2
-        container.addChild(body)
+        // Shell - green dome (upper half circle via path)
+        let shellPath = CGMutablePath()
+        shellPath.addArc(center: CGPoint(x: 0, y: 0), radius: 15, startAngle: 0, endAngle: .pi, clockwise: false)
+        shellPath.closeSubpath()
+        let shell = SKShapeNode(path: shellPath)
+        shell.fillColor = SKColor(red: 0.0, green: 0.6, blue: 0.2, alpha: 1)
+        shell.strokeColor = SKColor(red: 0.0, green: 0.4, blue: 0.1, alpha: 1)
+        shell.lineWidth = 1.5
+        container.addChild(shell)
 
-        let wing = SKShapeNode(ellipseOf: CGSize(width: 14, height: 9))
-        wing.fillColor = SKColor.green.withAlphaComponent(0.7)
-        wing.strokeColor = .clear
-        wing.position = CGPoint(x: -10, y: 3)
+        // Shell pattern - darker green lines
+        for i in 0..<3 {
+            let line = SKShapeNode(rectOf: CGSize(width: 2, height: 10), cornerRadius: 1)
+            line.fillColor = SKColor(red: 0.0, green: 0.45, blue: 0.15, alpha: 0.6)
+            line.strokeColor = .clear
+            line.position = CGPoint(x: CGFloat(i - 1) * 8, y: 5)
+            container.addChild(line)
+        }
+
+        // Under-body - flat bottom (lighter green rectangle)
+        let underBody = SKShapeNode(rectOf: CGSize(width: 30, height: 6), cornerRadius: 2)
+        underBody.fillColor = SKColor(red: 0.6, green: 0.8, blue: 0.4, alpha: 1)
+        underBody.strokeColor = SKColor(red: 0.0, green: 0.4, blue: 0.1, alpha: 1)
+        underBody.lineWidth = 1
+        underBody.position = CGPoint(x: 0, y: -3)
+        container.addChild(underBody)
+
+        // Head poking out right
+        let head = SKShapeNode(circleOfRadius: 6)
+        head.fillColor = SKColor(red: 0.4, green: 0.7, blue: 0.3, alpha: 1)
+        head.strokeColor = SKColor(red: 0.0, green: 0.4, blue: 0.1, alpha: 1)
+        head.lineWidth = 1
+        head.position = CGPoint(x: 16, y: 0)
+        container.addChild(head)
+
+        // Eyes
+        let eye = SKShapeNode(circleOfRadius: 2)
+        eye.fillColor = .white
+        eye.strokeColor = .darkGray
+        eye.lineWidth = 0.5
+        eye.position = CGPoint(x: 19, y: 2)
+        container.addChild(eye)
+
+        let pupil = SKShapeNode(circleOfRadius: 1)
+        pupil.fillColor = .black
+        pupil.strokeColor = .clear
+        pupil.position = CGPoint(x: 20, y: 2)
+        container.addChild(pupil)
+
+        // Stubby legs
+        for (dx, dy) in [(-8, -8), (8, -8)] as [(CGFloat, CGFloat)] {
+            let leg = SKShapeNode(ellipseOf: CGSize(width: 6, height: 4))
+            leg.fillColor = SKColor(red: 0.4, green: 0.7, blue: 0.3, alpha: 1)
+            leg.strokeColor = SKColor(red: 0.0, green: 0.4, blue: 0.1, alpha: 1)
+            leg.lineWidth = 0.5
+            leg.position = CGPoint(x: dx, y: dy)
+            container.addChild(leg)
+        }
+
+        // Tiny tail
+        let tail = SKShapeNode(ellipseOf: CGSize(width: 5, height: 3))
+        tail.fillColor = SKColor(red: 0.4, green: 0.7, blue: 0.3, alpha: 1)
+        tail.strokeColor = .clear
+        tail.position = CGPoint(x: -16, y: -2)
+        container.addChild(tail)
+
+        // Absurdly small wings - flapping frantically
+        let wing = SKShapeNode(ellipseOf: CGSize(width: 8, height: 5))
+        wing.fillColor = SKColor(red: 0.4, green: 0.7, blue: 0.3, alpha: 0.8)
+        wing.strokeColor = SKColor(red: 0.0, green: 0.4, blue: 0.1, alpha: 1)
+        wing.lineWidth = 0.5
+        wing.position = CGPoint(x: -4, y: 12)
         wing.name = "wing"
         container.addChild(wing)
         addWingAnimation(to: wing, range: 5, duration: 0.08)
