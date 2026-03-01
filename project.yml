@@ -27,7 +27,6 @@ targets:
           - "**/.DS_Store"
     resources:
       - path: FlappyBird/Resources/Assets.xcassets
-      - path: FlappyBird/Resources/Sounds
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jubilant-dollop.FlappyBird
@@ -53,7 +52,6 @@ targets:
           - "**/.DS_Store"
     resources:
       - path: FlappyBird/Resources/Assets.xcassets
-      - path: FlappyBird/Resources/Sounds
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jubilant-dollop.FlappyBird
