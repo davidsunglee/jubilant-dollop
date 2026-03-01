@@ -54,10 +54,10 @@ class SFXGenerator {
     func playScore() {
         let osc1 = Oscillator(waveform: Table(.sine))
         osc1.frequency = 880 // A5
-        osc1.amplitude = 0.3
+        osc1.amplitude = 0.15
         let osc2 = Oscillator(waveform: Table(.sine))
         osc2.frequency = 1109 // C#6 (major third above A5)
-        osc2.amplitude = 0.3
+        osc2.amplitude = 0.15
 
         let noteMixer = Mixer([osc1, osc2])
         let fader = Fader(noteMixer)

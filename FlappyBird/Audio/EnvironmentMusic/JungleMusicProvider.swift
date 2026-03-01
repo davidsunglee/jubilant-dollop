@@ -50,7 +50,7 @@ class JungleMusicProvider: EnvironmentMusicProvider {
         hihatFilter?.cutoffFrequency = 7000
 
         let tm = Mixer([leadOsc!, bassOsc!, kickFilter!, hihatFilter!])
-        tm.volume = 0.3
+        tm.volume = 0.4
         trackMixer = tm
         mixer.addInput(tm)
 

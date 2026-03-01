@@ -41,7 +41,7 @@ class DesertMusicProvider: EnvironmentMusicProvider {
         bassOsc?.amplitude = 0.35
 
         let tm = Mixer([leadFilter!, bassOsc!])
-        tm.volume = 0.3
+        tm.volume = 0.4
         trackMixer = tm
         mixer.addInput(tm)
 

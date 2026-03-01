@@ -41,7 +41,7 @@ class UnderwaterMusicProvider: EnvironmentMusicProvider {
         arpOsc?.amplitude = 0
 
         let tm = Mixer([padOsc1!, padOsc2!, arpOsc!])
-        tm.volume = 0.3
+        tm.volume = 0.4
         trackMixer = tm
         mixer.addInput(tm)
 

@@ -36,7 +36,7 @@ class ArcticMusicProvider: EnvironmentMusicProvider {
         padOsc?.amplitude = 0.1
 
         let tm = Mixer([bellOsc!, padOsc!])
-        tm.volume = 0.3
+        tm.volume = 0.4
         trackMixer = tm
         mixer.addInput(tm)
 
