@@ -224,16 +224,77 @@ class CharacterRenderer {
 
     // MARK: - Pegasus
     private static func buildPegasus(in container: SKNode) {
-        let body = SKShapeNode(rectOf: CGSize(width: 38, height: 32), cornerRadius: 4)
+        // Body - white rectangle
+        let body = SKShapeNode(rectOf: CGSize(width: 32, height: 22), cornerRadius: 6)
         body.fillColor = .white
         body.strokeColor = .lightGray
-        body.lineWidth = 2
+        body.lineWidth = 1.5
         container.addChild(body)
 
-        let wing = SKShapeNode(ellipseOf: CGSize(width: 15, height: 10))
-        wing.fillColor = SKColor.white.withAlphaComponent(0.7)
-        wing.strokeColor = .clear
-        wing.position = CGPoint(x: -11, y: 5)
+        // Neck + Head - elongated upward-right
+        let neck = SKShapeNode(rectOf: CGSize(width: 8, height: 16), cornerRadius: 3)
+        neck.fillColor = .white
+        neck.strokeColor = .lightGray
+        neck.lineWidth = 1
+        neck.position = CGPoint(x: 14, y: 12)
+        neck.zRotation = -0.3
+        container.addChild(neck)
+
+        let head = SKShapeNode(ellipseOf: CGSize(width: 14, height: 10))
+        head.fillColor = .white
+        head.strokeColor = .lightGray
+        head.lineWidth = 1
+        head.position = CGPoint(x: 20, y: 18)
+        container.addChild(head)
+
+        // Eye
+        let eye = SKShapeNode(circleOfRadius: 2)
+        eye.fillColor = .black
+        eye.strokeColor = .clear
+        eye.position = CGPoint(x: 23, y: 19)
+        container.addChild(eye)
+
+        // Pointed ears
+        for dx in [-2, 2] as [CGFloat] {
+            let earPath = CGMutablePath()
+            earPath.move(to: CGPoint(x: 18 + dx, y: 22))
+            earPath.addLine(to: CGPoint(x: 19 + dx, y: 28))
+            earPath.addLine(to: CGPoint(x: 21 + dx, y: 22))
+            earPath.closeSubpath()
+            let ear = SKShapeNode(path: earPath)
+            ear.fillColor = .white
+            ear.strokeColor = .lightGray
+            ear.lineWidth = 0.5
+            container.addChild(ear)
+        }
+
+        // Flowing tail - overlapping curved ellipses
+        for i in 0..<3 {
+            let tailPiece = SKShapeNode(ellipseOf: CGSize(width: 10, height: 5))
+            tailPiece.fillColor = SKColor(red: 0.9, green: 0.9, blue: 0.95, alpha: 0.9)
+            tailPiece.strokeColor = .lightGray
+            tailPiece.lineWidth = 0.5
+            tailPiece.position = CGPoint(x: -18 - CGFloat(i) * 4, y: CGFloat(i) * 3 - 2)
+            tailPiece.zRotation = CGFloat(i) * 0.2
+            container.addChild(tailPiece)
+        }
+
+        // Legs - two small rectangles at bottom
+        for dx in [-6, 6] as [CGFloat] {
+            let leg = SKShapeNode(rectOf: CGSize(width: 3, height: 8), cornerRadius: 1)
+            leg.fillColor = .white
+            leg.strokeColor = .lightGray
+            leg.lineWidth = 0.5
+            leg.position = CGPoint(x: dx, y: -15)
+            container.addChild(leg)
+        }
+
+        // Large angelic wings
+        let wing = SKShapeNode(ellipseOf: CGSize(width: 20, height: 12))
+        wing.fillColor = SKColor(red: 0.95, green: 0.95, blue: 1.0, alpha: 0.9)
+        wing.strokeColor = .lightGray
+        wing.lineWidth = 0.5
+        wing.position = CGPoint(x: -2, y: 14)
         wing.name = "wing"
         container.addChild(wing)
         addWingAnimation(to: wing, range: 10, duration: 0.2)
