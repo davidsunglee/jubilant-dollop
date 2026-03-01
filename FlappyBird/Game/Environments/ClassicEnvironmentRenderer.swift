@@ -82,6 +82,59 @@ class ClassicEnvironmentRenderer: EnvironmentRenderer {
         }
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = .cyan
+
+        // Far layer: mini green hills (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let hillPositions: [(x: CGFloat, radius: CGFloat)] = [
+                (size.width * 0.2, 18),
+                (size.width * 0.5, 24),
+                (size.width * 0.8, 16),
+            ]
+            for hp in hillPositions {
+                let hill = SKShapeNode(circleOfRadius: hp.radius)
+                hill.fillColor = SKColor(red: 0.4, green: 0.7, blue: 0.3, alpha: 1)
+                hill.strokeColor = SKColor(red: 0.3, green: 0.6, blue: 0.2, alpha: 1)
+                hill.lineWidth = 0.5
+                hill.position = CGPoint(x: hp.x, y: 8 + hp.radius * 0.3)
+                container.addChild(hill)
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Mid layer: mini fluffy clouds (0.5x)
+        var midNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let cloudPositions: [(x: CGFloat, y: CGFloat, scale: CGFloat)] = [
+                (size.width * 0.2, size.height * 0.75, 0.35),
+                (size.width * 0.6, size.height * 0.85, 0.25),
+                (size.width * 0.85, size.height * 0.65, 0.3),
+            ]
+            for cp in cloudPositions {
+                let cloud = buildCloud(scale: cp.scale)
+                cloud.position = CGPoint(x: cp.x, y: cp.y)
+                container.addChild(cloud)
+            }
+
+            container.zPosition = -6
+            scene.addChild(container)
+            midNodes.append(container)
+        }
+        parallax.addLayer(nodes: midNodes, speedMultiplier: 0.5, width: size.width)
+    }
+
     private func buildCloud(scale: CGFloat) -> SKNode {
         let cloud = SKNode()
         let positions: [(x: CGFloat, y: CGFloat, r: CGFloat)] = [
