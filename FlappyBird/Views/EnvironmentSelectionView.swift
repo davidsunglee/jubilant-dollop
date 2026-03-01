@@ -31,14 +31,27 @@ struct EnvironmentSelectionView: View {
 
     private func environmentCard(environment: GameEnvironment) -> some View {
         VStack(spacing: 8) {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color(environment.backgroundColor))
-                .frame(height: 80)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(environment.obstacleColor))
-                        .frame(width: 20, height: 50)
-                )
+            Group {
+                if let image = EnvironmentPreviewRenderer.renderToImage(for: environment, size: CGSize(width: 160, height: 80)) {
+                    #if os(iOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .interpolation(.high)
+                        .frame(height: 80)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    #elseif os(macOS)
+                    Image(nsImage: image)
+                        .resizable()
+                        .interpolation(.high)
+                        .frame(height: 80)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    #endif
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(environment.backgroundColor))
+                        .frame(height: 80)
+                }
+            }
 
             Text(environment.displayName)
                 .font(.headline)

@@ -19,23 +19,22 @@ extension GameScene {
         let maxY = size.height * 0.8
         let randomGapY = CGFloat.random(in: minY...maxY)
 
-        let pipe = PipeNode(
+        let obstacle = ObstacleNode(
             sceneHeight: size.height,
             gapCenterY: randomGapY,
             gapHeight: gapHeight,
             pipeWidth: pipeWidth,
-            color: router.config.environment.obstacleColor
+            renderer: router.config.environment.renderer
         )
 
-        pipe.position = CGPoint(x: size.width + pipeWidth, y: 0)
-        pipe.zPosition = 1
-        addChild(pipe)
+        obstacle.position = CGPoint(x: size.width + pipeWidth, y: 0)
+        obstacle.zPosition = 1
+        addChild(obstacle)
 
-        // Move pipe across screen and remove when off-screen
         let distance = size.width + pipeWidth * 2
         let duration = TimeInterval(distance / pipeSpeed)
         let moveAction = SKAction.moveBy(x: -distance, y: 0, duration: duration)
         let removeAction = SKAction.removeFromParent()
-        pipe.run(SKAction.sequence([moveAction, removeAction]))
+        obstacle.run(SKAction.sequence([moveAction, removeAction]))
     }
 }
