@@ -69,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupBoundaries()
         startSpawning()
         isGameActive = true
-        AudioManager.shared.playBGM()
+        AudioManager.shared.playEnvironmentMusic(for: router.config.environment)
     }
 
     // MARK: - Setup
@@ -221,13 +221,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             DispatchQueue.main.async { [weak self] in
                 self?.router.incrementScore(forPlayer: playerNode.playerIndex)
             }
-            AudioManager.shared.playScoreSound(on: self)
+            AudioManager.shared.playScoreSound()
 
         } else if otherCategory == PhysicsCategory.obstacle || otherCategory == PhysicsCategory.boundary {
             guard !playerNode.isInvincible else { return }
 
             let survived = router.playerHit(playerNode.playerIndex)
-            AudioManager.shared.playCollisionSound(on: self)
+            AudioManager.shared.playCollisionSound()
 
             if survived {
                 playerNode.hit()
@@ -239,7 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     isGameActive = false
                     removeAllActions()
                     scoredPipes.removeAll()
-                    AudioManager.shared.stopBGM()
+                    AudioManager.shared.stopMusic()
                 }
             }
         }

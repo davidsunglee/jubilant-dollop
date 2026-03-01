@@ -41,6 +41,9 @@ struct CharacterSelectionView: View {
             }
             .padding()
         }
+        .onAppear {
+            AudioManager.shared.playMenuMusic(forState: .characterSelection)
+        }
     }
 
     private func characterPicker(title: String, selection: Binding<GameCharacter>) -> some View {

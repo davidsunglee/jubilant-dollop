@@ -120,6 +120,7 @@ struct GameplayView: View {
                     .buttonStyle(.plain)
 
                     Button {
+                        AudioManager.shared.stopMusic()
                         router.returnToTitle()
                     } label: {
                         Text("Menu")

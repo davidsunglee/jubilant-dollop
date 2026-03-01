@@ -8,6 +8,7 @@ struct TitleView: View {
             Color.cyan.ignoresSafeArea()
 
             VStack(spacing: 40) {
+
                 Text("Flappy Bird")
                     .font(.system(size: 48, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
@@ -39,6 +40,9 @@ struct TitleView: View {
                     .buttonStyle(.plain)
                 }
             }
+        }
+        .onAppear {
+            AudioManager.shared.playMenuMusic(forState: .title)
         }
     }
 }
