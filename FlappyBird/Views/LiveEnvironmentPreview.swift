@@ -41,27 +41,45 @@ class EnvironmentPreviewScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
+        guard isPaused == false else { return }
         let deltaTime = lastUpdateTime == 0 ? 1.0 / 15.0 : currentTime - lastUpdateTime
         lastUpdateTime = currentTime
         parallax?.update(deltaTime: min(deltaTime, 0.1))
     }
 }
 
-struct LiveEnvironmentPreview: View {
-    let environment: GameEnvironment
+/// Holds the scene instance so it isn't recreated on every SwiftUI body evaluation.
+class EnvironmentPreviewSceneHolder: ObservableObject {
+    let scene: EnvironmentPreviewScene
 
-    private var scene: EnvironmentPreviewScene {
+    init(environment: GameEnvironment) {
         let scene = EnvironmentPreviewScene(
             environment: environment,
             size: CGSize(width: 170, height: 100)
         )
         scene.scaleMode = .resizeFill
-        return scene
+        self.scene = scene
+    }
+}
+
+struct LiveEnvironmentPreview: View {
+    let environment: GameEnvironment
+    @StateObject private var holder: EnvironmentPreviewSceneHolder
+
+    init(environment: GameEnvironment) {
+        self.environment = environment
+        _holder = StateObject(wrappedValue: EnvironmentPreviewSceneHolder(environment: environment))
     }
 
     var body: some View {
-        SpriteView(scene: scene, options: [.allowsTransparency])
+        SpriteView(scene: holder.scene, options: [.allowsTransparency])
             .frame(width: 170, height: 100)
             .clipShape(RoundedRectangle(cornerRadius: 8))
+            .onDisappear {
+                holder.scene.isPaused = true
+            }
+            .onAppear {
+                holder.scene.isPaused = false
+            }
     }
 }
