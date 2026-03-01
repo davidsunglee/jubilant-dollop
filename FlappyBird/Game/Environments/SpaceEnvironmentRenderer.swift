@@ -80,6 +80,79 @@ class SpaceEnvironmentRenderer: EnvironmentRenderer {
         shootingStar.run(SKAction.repeatForever(SKAction.sequence([waitAction, appear, streak, fade, reset, nextWait])))
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = .black
+
+        // Static twinkling stars (no parallax - fixed in scene)
+        for _ in 0..<15 {
+            let star = SKShapeNode(circleOfRadius: CGFloat.random(in: 0.5...1.2))
+            star.fillColor = Bool.random()
+                ? SKColor(white: 1.0, alpha: CGFloat.random(in: 0.6...1.0))
+                : SKColor(red: 0.7, green: 0.8, blue: 1.0, alpha: CGFloat.random(in: 0.5...0.9))
+            star.strokeColor = .clear
+            star.position = CGPoint(
+                x: CGFloat.random(in: 0...size.width),
+                y: CGFloat.random(in: 0...size.height)
+            )
+            star.zPosition = -9
+            scene.addChild(star)
+
+            let twinkle = SKAction.sequence([
+                SKAction.fadeAlpha(to: CGFloat.random(in: 0.3...0.6), duration: TimeInterval.random(in: 1.5...3.0)),
+                SKAction.fadeAlpha(to: 1.0, duration: TimeInterval.random(in: 1.5...3.0)),
+            ])
+            star.run(SKAction.repeatForever(twinkle))
+        }
+
+        // Far layer: mini nebula smudges (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let nebulaConfigs: [(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat, color: SKColor)] = [
+                (size.width * 0.3, size.height * 0.65, 35, 20,
+                 SKColor(red: 0.4, green: 0.1, blue: 0.6, alpha: 0.2)),
+                (size.width * 0.7, size.height * 0.4, 28, 18,
+                 SKColor(red: 0.1, green: 0.2, blue: 0.6, alpha: 0.18)),
+            ]
+            for nc in nebulaConfigs {
+                let nebula = SKShapeNode(ellipseOf: CGSize(width: nc.w, height: nc.h))
+                nebula.fillColor = nc.color
+                nebula.strokeColor = .clear
+                nebula.position = CGPoint(x: nc.x, y: nc.y)
+                container.addChild(nebula)
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Animated: mini shooting star
+        let shootingStar = SKShapeNode(ellipseOf: CGSize(width: 4, height: 1))
+        shootingStar.fillColor = .white
+        shootingStar.strokeColor = .clear
+        shootingStar.position = CGPoint(x: -10, y: size.height * 0.8)
+        shootingStar.zPosition = -5
+        shootingStar.alpha = 0
+        scene.addChild(shootingStar)
+
+        let waitAction = SKAction.wait(forDuration: TimeInterval.random(in: 3...6))
+        let appear = SKAction.fadeAlpha(to: 1.0, duration: 0.05)
+        let streak = SKAction.moveBy(x: size.width + 20, y: -size.height * 0.3, duration: 0.4)
+        let fade = SKAction.fadeAlpha(to: 0, duration: 0.05)
+        let reset = SKAction.run {
+            shootingStar.position = CGPoint(
+                x: CGFloat.random(in: -10...size.width * 0.3),
+                y: CGFloat.random(in: size.height * 0.6...size.height)
+            )
+        }
+        let nextWait = SKAction.wait(forDuration: TimeInterval.random(in: 3...6))
+        shootingStar.run(SKAction.repeatForever(SKAction.sequence([waitAction, appear, streak, fade, reset, nextWait])))
+    }
+
     // MARK: - Obstacle
 
     func buildObstacle(sceneHeight: CGFloat, gapCenterY: CGFloat, gapHeight: CGFloat, pipeWidth: CGFloat) -> SKNode {
