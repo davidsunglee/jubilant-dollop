@@ -19,16 +19,63 @@ class CharacterRenderer {
 
     // MARK: - Avian
     private static func buildAvian(in container: SKNode) {
-        let body = SKShapeNode(circleOfRadius: 15)
+        // Body - round yellow
+        let body = SKShapeNode(circleOfRadius: 13)
         body.fillColor = .yellow
         body.strokeColor = .orange
-        body.lineWidth = 2
+        body.lineWidth = 1.5
         container.addChild(body)
 
-        let wing = SKShapeNode(ellipseOf: CGSize(width: 12, height: 9))
-        wing.fillColor = SKColor.yellow.withAlphaComponent(0.7)
-        wing.strokeColor = .clear
-        wing.position = CGPoint(x: -9, y: 5)
+        // Belly - lighter oval
+        let belly = SKShapeNode(ellipseOf: CGSize(width: 16, height: 12))
+        belly.fillColor = SKColor(red: 1.0, green: 1.0, blue: 0.8, alpha: 1)
+        belly.strokeColor = .clear
+        belly.position = CGPoint(x: 1, y: -2)
+        container.addChild(belly)
+
+        // Eye - white with black pupil
+        let eye = SKShapeNode(circleOfRadius: 4)
+        eye.fillColor = .white
+        eye.strokeColor = .darkGray
+        eye.lineWidth = 0.5
+        eye.position = CGPoint(x: 6, y: 4)
+        container.addChild(eye)
+
+        let pupil = SKShapeNode(circleOfRadius: 2)
+        pupil.fillColor = .black
+        pupil.strokeColor = .clear
+        pupil.position = CGPoint(x: 7, y: 4)
+        container.addChild(pupil)
+
+        // Beak - orange triangle (using path)
+        let beakPath = CGMutablePath()
+        beakPath.move(to: CGPoint(x: 12, y: 2))
+        beakPath.addLine(to: CGPoint(x: 20, y: 0))
+        beakPath.addLine(to: CGPoint(x: 12, y: -2))
+        beakPath.closeSubpath()
+        let beak = SKShapeNode(path: beakPath)
+        beak.fillColor = .orange
+        beak.strokeColor = SKColor(red: 0.8, green: 0.4, blue: 0.0, alpha: 1)
+        beak.lineWidth = 1
+        container.addChild(beak)
+
+        // Tail feathers - 2 small ellipses fanning left
+        for i in 0..<2 {
+            let feather = SKShapeNode(ellipseOf: CGSize(width: 10, height: 4))
+            feather.fillColor = SKColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1)
+            feather.strokeColor = .orange
+            feather.lineWidth = 0.5
+            feather.position = CGPoint(x: -14, y: CGFloat(i) * 4 - 2)
+            feather.zRotation = CGFloat(i) * 0.3 - 0.15
+            container.addChild(feather)
+        }
+
+        // Wing - feathered ellipse
+        let wing = SKShapeNode(ellipseOf: CGSize(width: 14, height: 8))
+        wing.fillColor = SKColor(red: 0.9, green: 0.8, blue: 0.0, alpha: 0.9)
+        wing.strokeColor = .orange
+        wing.lineWidth = 0.5
+        wing.position = CGPoint(x: -4, y: 6)
         wing.name = "wing"
         container.addChild(wing)
         addWingAnimation(to: wing, range: 6, duration: 0.15)
