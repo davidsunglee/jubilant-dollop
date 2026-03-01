@@ -1,4 +1,5 @@
 import SwiftUI
+import SpriteKit
 
 struct CharacterSelectionView: View {
     @ObservedObject var router: GameRouter
@@ -94,25 +95,7 @@ struct CharacterSelectionView: View {
 
     private func characterCard(character: GameCharacter, isSelected: Bool) -> some View {
         VStack(spacing: 6) {
-            Group {
-                if let image = CharacterRenderer.renderToImage(for: character, size: CGSize(width: 60, height: 60)) {
-                    #if os(iOS)
-                    Image(uiImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(width: 60, height: 60)
-                    #elseif os(macOS)
-                    Image(nsImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(width: 60, height: 60)
-                    #endif
-                } else {
-                    Rectangle()
-                        .fill(Color(character.color))
-                        .frame(width: 60, height: 60)
-                }
-            }
+            LiveCharacterPreview(character: character, isSelected: isSelected)
 
             Text(character.displayName)
                 .font(.caption.bold())
