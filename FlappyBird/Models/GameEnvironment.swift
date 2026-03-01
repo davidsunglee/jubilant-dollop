@@ -53,4 +53,15 @@ enum GameEnvironment: String, CaseIterable, Identifiable {
         case .space:      return SKColor(red: 0.1, green: 0.0, blue: 0.2, alpha: 1.0)
         }
     }
+
+    var renderer: EnvironmentRenderer {
+        switch self {
+        case .classic:    return ClassicEnvironmentRenderer()
+        case .jungle:     return JungleEnvironmentRenderer()
+        case .underwater: return UnderwaterEnvironmentRenderer()
+        case .arctic:     return ArcticEnvironmentRenderer()
+        case .desert:     return DesertEnvironmentRenderer()
+        case .space:      return SpaceEnvironmentRenderer()
+        }
+    }
 }
