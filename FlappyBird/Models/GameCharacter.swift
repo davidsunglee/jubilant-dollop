@@ -33,17 +33,6 @@ enum GameCharacter: String, CaseIterable, Identifiable {
         }
     }
 
-    var sfSymbolName: String {
-        switch self {
-        case .avian:          return "bird.fill"
-        case .wingedPig:      return "hare.fill"
-        case .flyingSquirrel: return "leaf.fill"
-        case .pegasus:        return "figure.equestrian.sports"
-        case .wingedTurtle:   return "tortoise.fill"
-        case .bat:            return "bat.fill"
-        }
-    }
-
     var physicsBodySize: CGSize {
         switch self {
         case .avian:          return CGSize(width: 30, height: 30)
