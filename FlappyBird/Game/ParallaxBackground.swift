@@ -1,50 +1,44 @@
 import SpriteKit
 
+struct ParallaxLayer {
+    let nodes: [SKNode]
+    let speedMultiplier: CGFloat
+    let width: CGFloat
+}
+
 class ParallaxBackground {
-    private var backgroundNodes: [SKSpriteNode] = []
-    private let scrollSpeed: CGFloat
-    private weak var parentNode: SKNode?
+    private var layers: [ParallaxLayer] = []
+    private let baseSpeed: CGFloat
 
-    init(color: SKColor, size: CGSize, scrollSpeed: CGFloat = 100, parent: SKNode) {
-        self.scrollSpeed = scrollSpeed
-        self.parentNode = parent
+    init(baseSpeed: CGFloat = 150) {
+        self.baseSpeed = baseSpeed
+    }
 
-        // Create two identical background nodes for infinite scrolling
-        for i in 0..<2 {
-            let bg = SKSpriteNode(color: color, size: size)
-            bg.anchorPoint = .zero
-            bg.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
-            bg.zPosition = -10
-            bg.name = "parallaxBg\(i)"
-            parent.addChild(bg)
-            backgroundNodes.append(bg)
-        }
+    func addLayer(nodes: [SKNode], speedMultiplier: CGFloat, width: CGFloat) {
+        let layer = ParallaxLayer(nodes: nodes, speedMultiplier: speedMultiplier, width: width)
+        layers.append(layer)
     }
 
     func update(deltaTime: TimeInterval) {
-        guard let firstNode = backgroundNodes.first else { return }
-        let width = firstNode.size.width
+        for layer in layers {
+            let speed = baseSpeed * layer.speedMultiplier
+            for node in layer.nodes {
+                node.position.x -= speed * CGFloat(deltaTime)
 
-        for node in backgroundNodes {
-            node.position.x -= scrollSpeed * CGFloat(deltaTime)
-
-            // When a node's right edge scrolls off screen, reposition behind the other
-            if node.position.x + width <= 0 {
-                // Find the rightmost node
-                let maxX = backgroundNodes.map { $0.position.x }.max() ?? 0
-                node.position.x = maxX + width
+                if node.position.x + layer.width <= 0 {
+                    let maxX = layer.nodes.map { $0.position.x }.max() ?? 0
+                    node.position.x = maxX + layer.width
+                }
             }
         }
     }
 
-    func stop() {
-        // No-op; the update loop simply won't call update anymore
-    }
-
     func removeFromParent() {
-        for node in backgroundNodes {
-            node.removeFromParent()
+        for layer in layers {
+            for node in layer.nodes {
+                node.removeFromParent()
+            }
         }
-        backgroundNodes.removeAll()
+        layers.removeAll()
     }
 }
