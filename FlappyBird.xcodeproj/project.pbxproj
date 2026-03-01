@@ -42,14 +42,28 @@
 		8371513B8F971C029C7081CB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3202C35D079424FCF1F8EF /* GameScene.swift */; };
 		8BA42DF723E747DE7E928870 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A6A52C66E7F6A39F565FF /* TitleView.swift */; };
 		9E4772BD35E4CE368B3A87B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */; };
-		A6E63F38D2ECE2F99D3EACF5 /* PipeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* PipeNode.swift */; };
+		A6E63F38D2ECE2F99D3EACF5 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */; };
+		AA1B2C3D4E5F607182930A1B /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */; };
+		CC3D4E5F607182930A1B2C3D /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */; };
+		EE5F607182930A1B2C3D4E5F /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */; };
+		A1718293A0B1C2D3E4F50617 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */; };
+		C3940516A2B3C4D5E6F70829 /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */; };
+		E5B60738C4D5E6F708193A2B /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */; };
+		A7D8095AE6F708193A2B3C4D /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */; };
 		A6FBB47A5A5538057D9AE092 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = D42F650C645601D8EAE17468 /* collision.wav */; };
 		A82B8D389D09B88AE77EFF01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */; };
 		B43BB20E535E048F75A50E1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC427936D543BD726587CE /* AudioManager.swift */; };
 		B6C0C0435F4CDE1980C5C7AC /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D7F514C1FDCE1E5E89C556 /* score.wav */; };
 		C1FD3D385AAF68707D89D98E /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */; };
 		CDD82A42135F4B6B834E8421 /* GameScene+Spawning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */; };
-		D1640F430A4AB3A1F4C7B977 /* PipeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* PipeNode.swift */; };
+		D1640F430A4AB3A1F4C7B977 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */; };
+		AA1B2C3D4E5F607182930A1C /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */; };
+		CC3D4E5F607182930A1B2C3E /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */; };
+		EE5F607182930A1B2C3D4E60 /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */; };
+		A1718293A0B1C2D3E4F50618 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */; };
+		C3940516A2B3C4D5E6F7082A /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */; };
+		E5B60738C4D5E6F708193A2C /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */; };
+		A7D8095AE6F708193A2B3C4E /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */; };
 		DB1D2AEC2EEA7DCADFC8DFD2 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30948F375B2ECCAA4C8AE634 /* GameState.swift */; };
 		E0C2AEFE3816ECC728D7E465 /* FlappyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB661579ABDBF7A78803930 /* FlappyBirdApp.swift */; };
 		E81186983FCCC8FD0C7C001C /* GameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E844913D08AC05892B1EE /* GameCharacter.swift */; };
@@ -80,7 +94,14 @@
 		B04A6A52C66E7F6A39F565FF /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		B6F08D59A8E91F2366A59E1E /* bgm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bgm.wav; sourceTree = "<group>"; };
 		B735E24AE07431ADAF4E955F /* GameScene+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Input.swift"; sourceTree = "<group>"; };
-		D0E0E6BD03FF906A612A76CD /* PipeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeNode.swift; sourceTree = "<group>"; };
+		D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleNode.swift; sourceTree = "<group>"; };
+		BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRenderer.swift; sourceTree = "<group>"; };
+		DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JungleEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderwaterEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcticEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEnvironmentRenderer.swift; sourceTree = "<group>"; };
 		D42F650C645601D8EAE17468 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
 		D7D7F514C1FDCE1E5E89C556 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		E7EC427936D543BD726587CE /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -147,14 +168,29 @@
 			isa = PBXGroup;
 			children = (
 				82E0D7E1E193E5FCA1EB7775 /* CharacterRenderer.swift */,
+				BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */,
+				A0B1C2D3E4F50617A8B9C0D1 /* Environments */,
 				0F3202C35D079424FCF1F8EF /* GameScene.swift */,
 				B735E24AE07431ADAF4E955F /* GameScene+Input.swift */,
 				FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */,
+				D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */,
 				FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */,
-				D0E0E6BD03FF906A612A76CD /* PipeNode.swift */,
 				1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		A0B1C2D3E4F50617A8B9C0D1 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */,
+				DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */,
+				F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */,
+				FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */,
+				B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */,
+				B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */,
+			);
+			path = Environments;
 			sourceTree = "<group>";
 		};
 		9A27F314F54E6B66660BF794 /* Models */ = {
@@ -320,7 +356,14 @@
 				7400CEF5C90A1DD01A013B8D /* GameplayView.swift in Sources */,
 				72441A2685259A05D7CFB5D6 /* ParallaxBackground.swift in Sources */,
 				3302A7B6F484E11C405D360F /* PhysicsCategory.swift in Sources */,
-				A6E63F38D2ECE2F99D3EACF5 /* PipeNode.swift in Sources */,
+				A6E63F38D2ECE2F99D3EACF5 /* ObstacleNode.swift in Sources */,
+				AA1B2C3D4E5F607182930A1B /* EnvironmentRenderer.swift in Sources */,
+				CC3D4E5F607182930A1B2C3D /* ClassicEnvironmentRenderer.swift in Sources */,
+				EE5F607182930A1B2C3D4E5F /* JungleEnvironmentRenderer.swift in Sources */,
+				A1718293A0B1C2D3E4F50617 /* UnderwaterEnvironmentRenderer.swift in Sources */,
+				C3940516A2B3C4D5E6F70829 /* ArcticEnvironmentRenderer.swift in Sources */,
+				E5B60738C4D5E6F708193A2B /* DesertEnvironmentRenderer.swift in Sources */,
+				A7D8095AE6F708193A2B3C4D /* SpaceEnvironmentRenderer.swift in Sources */,
 				5F2C8F62C3FED7AF2F331805 /* PlayerNode.swift in Sources */,
 				FD7468EDEACC3AB5FB356DC2 /* TitleView.swift in Sources */,
 			);
@@ -347,7 +390,14 @@
 				01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */,
 				C1FD3D385AAF68707D89D98E /* ParallaxBackground.swift in Sources */,
 				7CEBB1E3F9428038CEF49D77 /* PhysicsCategory.swift in Sources */,
-				D1640F430A4AB3A1F4C7B977 /* PipeNode.swift in Sources */,
+				D1640F430A4AB3A1F4C7B977 /* ObstacleNode.swift in Sources */,
+				AA1B2C3D4E5F607182930A1C /* EnvironmentRenderer.swift in Sources */,
+				CC3D4E5F607182930A1B2C3E /* ClassicEnvironmentRenderer.swift in Sources */,
+				EE5F607182930A1B2C3D4E60 /* JungleEnvironmentRenderer.swift in Sources */,
+				A1718293A0B1C2D3E4F50618 /* UnderwaterEnvironmentRenderer.swift in Sources */,
+				C3940516A2B3C4D5E6F7082A /* ArcticEnvironmentRenderer.swift in Sources */,
+				E5B60738C4D5E6F708193A2C /* DesertEnvironmentRenderer.swift in Sources */,
+				A7D8095AE6F708193A2B3C4E /* SpaceEnvironmentRenderer.swift in Sources */,
 				3E496F62C23B137ED46298D2 /* PlayerNode.swift in Sources */,
 				8BA42DF723E747DE7E928870 /* TitleView.swift in Sources */,
 			);
