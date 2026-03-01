@@ -24,10 +24,8 @@ struct EnvironmentSelectionView: View {
                     ForEach(GameEnvironment.allCases) { environment in
                         environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
                             .onTapGesture {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    selectedEnvironment = environment
-                                    router.selectEnvironment(environment)
-                                }
+                                selectedEnvironment = environment
+                                router.selectEnvironment(environment)
                             }
                     }
                 }
@@ -86,5 +84,6 @@ struct EnvironmentSelectionView: View {
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
         .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.clear, radius: 12)
         .scaleEffect(isSelected ? 1.05 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
     }
 }
