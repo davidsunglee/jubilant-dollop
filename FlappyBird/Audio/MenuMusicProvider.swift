@@ -1,5 +1,7 @@
 import AudioKit
 import AVFoundation
+import Foundation
+import SoundpipeAudioKit
 
 class MenuMusicProvider {
     static let shared = MenuMusicProvider()

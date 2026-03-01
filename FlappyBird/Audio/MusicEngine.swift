@@ -1,5 +1,6 @@
 import AudioKit
 import AVFoundation
+import SoundpipeAudioKit
 
 class MusicEngine {
     static let shared = MusicEngine()

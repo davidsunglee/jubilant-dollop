@@ -1,4 +1,6 @@
 import AudioKit
+import Foundation
+import SoundpipeAudioKit
 
 class DesertMusicProvider: EnvironmentMusicProvider {
     private var leadOsc: Oscillator?

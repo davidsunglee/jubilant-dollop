@@ -1,4 +1,6 @@
 import AudioKit
+import Foundation
+import SoundpipeAudioKit
 
 class UnderwaterMusicProvider: EnvironmentMusicProvider {
     private var padOsc1: Oscillator?

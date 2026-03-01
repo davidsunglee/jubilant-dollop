@@ -11,6 +11,9 @@ packages:
   AudioKit:
     url: https://github.com/AudioKit/AudioKit.git
     from: "5.6.0"
+  SoundpipeAudioKit:
+    url: https://github.com/AudioKit/SoundpipeAudioKit.git
+    from: "5.6.0"
 
 settings:
   base:
@@ -42,6 +45,7 @@ targets:
         CODE_SIGNING_ALLOWED: "NO"
     dependencies:
       - package: AudioKit
+      - package: SoundpipeAudioKit
 
   FlappyBird-macOS:
     type: application
@@ -64,3 +68,4 @@ targets:
         CODE_SIGNING_ALLOWED: "NO"
     dependencies:
       - package: AudioKit
+      - package: SoundpipeAudioKit
