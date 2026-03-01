@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E70833C0D6D60A6374FA2 /* GameplayView.swift */; };
 		0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42140252FA00D849A425CFDA /* CharacterSelectionView.swift */; };
+		AA11111111111111AAAAAAAA /* GlassButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22222222222222BBBBBBBB /* GlassButtonStyle.swift */; };
+		AA33333333333333AAAAAAAA /* GlassButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22222222222222BBBBBBBB /* GlassButtonStyle.swift */; };
+		CC11111111111111CCCCCCCC /* MenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */; };
+		CC33333333333333CCCCCCCC /* MenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */; };
 		068BA9F9AAFB7E51FC0FEBDC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */; };
 		093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
 		0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
@@ -95,6 +99,8 @@
 		040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0B96F217A616EA27A3F14350 /* ClassicMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicMusicProvider.swift; sourceTree = "<group>"; };
 		0F3202C35D079424FCF1F8EF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BB22222222222222BBBBBBBB /* GlassButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassButtonStyle.swift; sourceTree = "<group>"; };
+		DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBackgroundView.swift; sourceTree = "<group>"; };
 		105E70833C0D6D60A6374FA2 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		232130CA16A53B63147E7FBE /* ArcticEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcticEnvironmentRenderer.swift; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 				040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */,
 				8500681CEC752EA6E5EA90D7 /* EnvironmentSelectionView.swift */,
 				105E70833C0D6D60A6374FA2 /* GameplayView.swift */,
+				BB22222222222222BBBBBBBB /* GlassButtonStyle.swift */,
+				DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */,
 				B04A6A52C66E7F6A39F565FF /* TitleView.swift */,
 			);
 			path = Views;
@@ -417,6 +425,8 @@
 				CDD82A42135F4B6B834E8421 /* GameScene+Spawning.swift in Sources */,
 				0B50B8AD5C3A2C22864668FA /* GameScene.swift in Sources */,
 				DB1D2AEC2EEA7DCADFC8DFD2 /* GameState.swift in Sources */,
+				AA11111111111111AAAAAAAA /* GlassButtonStyle.swift in Sources */,
+				CC11111111111111CCCCCCCC /* MenuBackgroundView.swift in Sources */,
 				7400CEF5C90A1DD01A013B8D /* GameplayView.swift in Sources */,
 				6B36B98B097EDC464ECCD137 /* JungleEnvironmentRenderer.swift in Sources */,
 				AF6FC545EC3383CE3E07129D /* JungleMusicProvider.swift in Sources */,
@@ -462,6 +472,8 @@
 				47998C6A8BA2C45A6BEC8D19 /* GameScene+Spawning.swift in Sources */,
 				8371513B8F971C029C7081CB /* GameScene.swift in Sources */,
 				5C1E3F98A9AE206BC43743C7 /* GameState.swift in Sources */,
+				AA33333333333333AAAAAAAA /* GlassButtonStyle.swift in Sources */,
+				CC33333333333333CCCCCCCC /* MenuBackgroundView.swift in Sources */,
 				01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */,
 				98DC6940F1536EFDAD07205D /* JungleEnvironmentRenderer.swift in Sources */,
 				9DC5FB78C0D719851ACEF363 /* JungleMusicProvider.swift in Sources */,
