@@ -18,6 +18,6 @@ struct ContentView: View {
                 GameplayView(router: router)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: router.state)
+        .animation(.easeOut(duration: 0.4), value: router.state)
     }
 }
