@@ -479,4 +479,31 @@ class CharacterRenderer {
         let flap = SKAction.sequence([flapUp, flapDown])
         wing.run(SKAction.repeatForever(flap))
     }
+
+    // MARK: - Render to Image
+
+    #if os(iOS)
+    typealias PlatformImage = UIImage
+    #elseif os(macOS)
+    typealias PlatformImage = NSImage
+    #endif
+
+    static func renderToImage(for character: GameCharacter, size: CGSize = CGSize(width: 80, height: 80)) -> PlatformImage? {
+        let scene = SKScene(size: size)
+        scene.backgroundColor = .clear
+
+        let node = createNode(for: character)
+        node.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        scene.addChild(node)
+
+        let view = SKView(frame: CGRect(origin: .zero, size: size))
+        guard let texture = view.texture(from: scene) else { return nil }
+
+        #if os(iOS)
+        return UIImage(cgImage: texture.cgImage())
+        #elseif os(macOS)
+        let cgImage = texture.cgImage()
+        return NSImage(cgImage: cgImage, size: size)
+        #endif
+    }
 }
