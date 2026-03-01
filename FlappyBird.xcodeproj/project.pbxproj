@@ -9,117 +9,161 @@
 /* Begin PBXBuildFile section */
 		01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E70833C0D6D60A6374FA2 /* GameplayView.swift */; };
 		0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42140252FA00D849A425CFDA /* CharacterSelectionView.swift */; };
+		093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
+		0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
 		0B50B8AD5C3A2C22864668FA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3202C35D079424FCF1F8EF /* GameScene.swift */; };
 		0DA5A03DC6FD4ADB134B6A7E /* GameEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E843682737E19575E79F32C /* GameEnvironment.swift */; };
 		111CA6AE1607743AC30F1239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DD11C6F46FD886741F75 /* Assets.xcassets */; };
-		1B68523204B6110CFEF8EBEB /* flap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F8DF0D859D5D4274B083C32 /* flap.wav */; };
-		2532AB471041CB5D0CDE9C38 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = D42F650C645601D8EAE17468 /* collision.wav */; };
+		17789F6C18E27A1650A54641 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE92D4174F8F1371C4CA3E7D /* UnderwaterEnvironmentRenderer.swift */; };
+		1C8D88F5A00EA872E6067D7F /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EA224111E6FAEEA1829FA /* DesertEnvironmentRenderer.swift */; };
+		25606A0AF462A7C03662CDD9 /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4B136960E902671F8F4BAD /* ClassicEnvironmentRenderer.swift */; };
 		29FCA9DB4DC3304F43CC2C51 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A464C9E14D2A6A370FDEB0 /* GameRouter.swift */; };
 		2A2A9121880093EB68E23F28 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0239F12777A68F98E6193C6 /* GameConfig.swift */; };
 		2AB714376974DC49BEBCA554 /* CharacterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E0D7E1E193E5FCA1EB7775 /* CharacterRenderer.swift */; };
+		2F733F6FA2D3BB609B3AA2BC /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C27D27BB2718B8892415B12 /* SpaceEnvironmentRenderer.swift */; };
+		32CE31330750AAA492A4202A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
 		3302A7B6F484E11C405D360F /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E4E837046A8DCB62766476 /* PhysicsCategory.swift */; };
 		3E496F62C23B137ED46298D2 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */; };
+		408AA8D79783D2DF0A03C0BD /* EnvironmentMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD39CCB31E1DACD34EB9C7F /* EnvironmentMusicProvider.swift */; };
+		43D5763F69A0AB53D78C0446 /* MusicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD20503913CB47CA00DCFC /* MusicEngine.swift */; };
 		45C8159DFD65A7C65591BA03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DD11C6F46FD886741F75 /* Assets.xcassets */; };
-		45EE090293645E25B1AACC33 /* flap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F8DF0D859D5D4274B083C32 /* flap.wav */; };
 		47998C6A8BA2C45A6BEC8D19 /* GameScene+Spawning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */; };
-		49E6B1C0AF30C7ED85D4E645 /* bgm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6F08D59A8E91F2366A59E1E /* bgm.wav */; };
 		4E462BEE307187320A01AE10 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A464C9E14D2A6A370FDEB0 /* GameRouter.swift */; };
-		5B747B2FFE230955605D9629 /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D7F514C1FDCE1E5E89C556 /* score.wav */; };
+		55C22B2F43F022A6BD2FE4EF /* EnvironmentMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */; };
+		5845F83F1C8F65C1ABA3BDB9 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE92D4174F8F1371C4CA3E7D /* UnderwaterEnvironmentRenderer.swift */; };
+		59F5C28952BC8FB2B0290BB5 /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232130CA16A53B63147E7FBE /* ArcticEnvironmentRenderer.swift */; };
+		5B9185CDC42959E89A2DBD0B /* MenuMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5133F3A8CCC3970EBA4A3A /* MenuMusicProvider.swift */; };
 		5C1E3F98A9AE206BC43743C7 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30948F375B2ECCAA4C8AE634 /* GameState.swift */; };
 		5C8E19E3D5503F5EF740E0AD /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0239F12777A68F98E6193C6 /* GameConfig.swift */; };
 		5E5DB28EA662E33E9352FD5B /* EnvironmentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500681CEC752EA6E5EA90D7 /* EnvironmentSelectionView.swift */; };
 		5F2C8F62C3FED7AF2F331805 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */; };
+		5F5383CA13CCC423D28605FD /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 68245BA54677E635FE9FC900 /* AudioKit */; };
+		61345083FDF823C8E0B1EA90 /* SFXGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */; };
 		615BA58D98874C71D3FF4AA5 /* GameScene+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735E24AE07431ADAF4E955F /* GameScene+Input.swift */; };
+		62AA744029546166E86E5AB1 /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394C713011573591EA13029 /* EnvironmentRenderer.swift */; };
 		62C0A8437F7E6A7E6C1E7F8A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC427936D543BD726587CE /* AudioManager.swift */; };
 		66A4DD723957318F554D4D73 /* CharacterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E0D7E1E193E5FCA1EB7775 /* CharacterRenderer.swift */; };
+		6B36B98B097EDC464ECCD137 /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABBDEF463E09BED9A3D57C /* JungleEnvironmentRenderer.swift */; };
+		6BA0180BCDCBC786FA2EF1AB /* ClassicMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B96F217A616EA27A3F14350 /* ClassicMusicProvider.swift */; };
 		6DE16527A9151BE44A5803D7 /* FlappyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB661579ABDBF7A78803930 /* FlappyBirdApp.swift */; };
+		71C2BD5206471EDD93A53090 /* ArcticMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C76444719C38CCB18FE008B /* ArcticMusicProvider.swift */; };
 		72441A2685259A05D7CFB5D6 /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */; };
 		7400CEF5C90A1DD01A013B8D /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E70833C0D6D60A6374FA2 /* GameplayView.swift */; };
 		7BC63A02B32ED81E4D077E7E /* GameScene+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735E24AE07431ADAF4E955F /* GameScene+Input.swift */; };
 		7CEBB1E3F9428038CEF49D77 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E4E837046A8DCB62766476 /* PhysicsCategory.swift */; };
+		7FA35A59473A7ECB6EC13D76 /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232130CA16A53B63147E7FBE /* ArcticEnvironmentRenderer.swift */; };
 		7FCAF04569111314D4437182 /* GameEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E843682737E19575E79F32C /* GameEnvironment.swift */; };
-		81CD626986E1A15677C60CA5 /* bgm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6F08D59A8E91F2366A59E1E /* bgm.wav */; };
 		8371513B8F971C029C7081CB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3202C35D079424FCF1F8EF /* GameScene.swift */; };
+		8919531FA891FD0AC1D36A60 /* MusicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD20503913CB47CA00DCFC /* MusicEngine.swift */; };
 		8BA42DF723E747DE7E928870 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A6A52C66E7F6A39F565FF /* TitleView.swift */; };
+		8E5C9053ADCC051605C9AF3F /* EnvironmentMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD39CCB31E1DACD34EB9C7F /* EnvironmentMusicProvider.swift */; };
+		9059DAF524A4DE7DF5EF3630 /* UnderwaterMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE1E24A8288B3A2A7188EE /* UnderwaterMusicProvider.swift */; };
+		97378D63F60C9FFA7E54CCF5 /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EA224111E6FAEEA1829FA /* DesertEnvironmentRenderer.swift */; };
+		98DC6940F1536EFDAD07205D /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABBDEF463E09BED9A3D57C /* JungleEnvironmentRenderer.swift */; };
+		9DC5FB78C0D719851ACEF363 /* JungleMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77221464CB1AEA7123EAE4 /* JungleMusicProvider.swift */; };
 		9E4772BD35E4CE368B3A87B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */; };
-		A6E63F38D2ECE2F99D3EACF5 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */; };
-		AA1B2C3D4E5F607182930A1B /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */; };
-		CC3D4E5F607182930A1B2C3D /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */; };
-		EE5F607182930A1B2C3D4E5F /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */; };
-		A1718293A0B1C2D3E4F50617 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */; };
-		C3940516A2B3C4D5E6F70829 /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */; };
-		E5B60738C4D5E6F708193A2B /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */; };
-		A7D8095AE6F708193A2B3C4D /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */; };
-		A6FBB47A5A5538057D9AE092 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = D42F650C645601D8EAE17468 /* collision.wav */; };
+		A3AFDEF35C50E900D94B2D3D /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
 		A82B8D389D09B88AE77EFF01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */; };
+		AD2EFA03B7AFE80A330F0B85 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DEEBB6D2BB6A55A216ECE864 /* AudioKit */; };
+		AF6FC545EC3383CE3E07129D /* JungleMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77221464CB1AEA7123EAE4 /* JungleMusicProvider.swift */; };
+		B0A253C7302FEB00F88007D9 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB35EAA464689B518E9A455 /* ObstacleNode.swift */; };
+		B30B3623FBBDCDB336E6E5F0 /* EnvironmentMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */; };
 		B43BB20E535E048F75A50E1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC427936D543BD726587CE /* AudioManager.swift */; };
-		B6C0C0435F4CDE1980C5C7AC /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D7F514C1FDCE1E5E89C556 /* score.wav */; };
 		C1FD3D385AAF68707D89D98E /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */; };
+		C9535D52A4607219D41FC91E /* SFXGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */; };
+		C9FA819FD45FDF6B5C6F3621 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB35EAA464689B518E9A455 /* ObstacleNode.swift */; };
 		CDD82A42135F4B6B834E8421 /* GameScene+Spawning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */; };
-		D1640F430A4AB3A1F4C7B977 /* ObstacleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */; };
-		AA1B2C3D4E5F607182930A1C /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */; };
-		CC3D4E5F607182930A1B2C3E /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */; };
-		EE5F607182930A1B2C3D4E60 /* JungleEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */; };
-		A1718293A0B1C2D3E4F50618 /* UnderwaterEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */; };
-		C3940516A2B3C4D5E6F7082A /* ArcticEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */; };
-		E5B60738C4D5E6F708193A2C /* DesertEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */; };
-		A7D8095AE6F708193A2B3C4E /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */; };
+		D2947857DD55429CAAD59C20 /* ArcticMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C76444719C38CCB18FE008B /* ArcticMusicProvider.swift */; };
+		DA905F6CD86EDB81C1D5C9A4 /* MenuMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5133F3A8CCC3970EBA4A3A /* MenuMusicProvider.swift */; };
 		DB1D2AEC2EEA7DCADFC8DFD2 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30948F375B2ECCAA4C8AE634 /* GameState.swift */; };
+		E00B0B19447F0440584A9C24 /* EnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394C713011573591EA13029 /* EnvironmentRenderer.swift */; };
 		E0C2AEFE3816ECC728D7E465 /* FlappyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB661579ABDBF7A78803930 /* FlappyBirdApp.swift */; };
+		E323F7C60630E8499B4E57C5 /* SpaceEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C27D27BB2718B8892415B12 /* SpaceEnvironmentRenderer.swift */; };
 		E81186983FCCC8FD0C7C001C /* GameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E844913D08AC05892B1EE /* GameCharacter.swift */; };
 		EA8EF0F1D083699E3F2C6E30 /* EnvironmentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500681CEC752EA6E5EA90D7 /* EnvironmentSelectionView.swift */; };
+		EFAAA889E98C50AF014853AD /* ClassicEnvironmentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4B136960E902671F8F4BAD /* ClassicEnvironmentRenderer.swift */; };
+		F32D09031F597EBCA17036A2 /* ClassicMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B96F217A616EA27A3F14350 /* ClassicMusicProvider.swift */; };
 		FB5C7D10DF1B6F1244E36FD2 /* GameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E844913D08AC05892B1EE /* GameCharacter.swift */; };
+		FB9C5AFDB82C505DE0A73CDD /* UnderwaterMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE1E24A8288B3A2A7188EE /* UnderwaterMusicProvider.swift */; };
 		FD7468EDEACC3AB5FB356DC2 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A6A52C66E7F6A39F565FF /* TitleView.swift */; };
 		FE77F5EA63863AD7E4044D58 /* CharacterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42140252FA00D849A425CFDA /* CharacterSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		040B5C9A7D8F4BF3B7F182D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B96F217A616EA27A3F14350 /* ClassicMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicMusicProvider.swift; sourceTree = "<group>"; };
 		0F3202C35D079424FCF1F8EF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		105E70833C0D6D60A6374FA2 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
+		232130CA16A53B63147E7FBE /* ArcticEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcticEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		2394C713011573591EA13029 /* EnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRenderer.swift; sourceTree = "<group>"; };
+		2FABBDEF463E09BED9A3D57C /* JungleEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JungleEnvironmentRenderer.swift; sourceTree = "<group>"; };
 		30948F375B2ECCAA4C8AE634 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		42140252FA00D849A425CFDA /* CharacterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSelectionView.swift; sourceTree = "<group>"; };
 		4394DD11C6F46FD886741F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertMusicProvider.swift; sourceTree = "<group>"; };
+		4C76444719C38CCB18FE008B /* ArcticMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcticMusicProvider.swift; sourceTree = "<group>"; };
+		4DBE1E24A8288B3A2A7188EE /* UnderwaterMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderwaterMusicProvider.swift; sourceTree = "<group>"; };
 		528062AAD813524B890C77D6 /* FlappyBird-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "FlappyBird-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB661579ABDBF7A78803930 /* FlappyBirdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdApp.swift; sourceTree = "<group>"; };
+		6C27D27BB2718B8892415B12 /* SpaceEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEnvironmentRenderer.swift; sourceTree = "<group>"; };
 		6E843682737E19575E79F32C /* GameEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnvironment.swift; sourceTree = "<group>"; };
 		7B5E844913D08AC05892B1EE /* GameCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCharacter.swift; sourceTree = "<group>"; };
 		82E0D7E1E193E5FCA1EB7775 /* CharacterRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRenderer.swift; sourceTree = "<group>"; };
 		8500681CEC752EA6E5EA90D7 /* EnvironmentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSelectionView.swift; sourceTree = "<group>"; };
+		8AB35EAA464689B518E9A455 /* ObstacleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleNode.swift; sourceTree = "<group>"; };
+		8D5133F3A8CCC3970EBA4A3A /* MenuMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMusicProvider.swift; sourceTree = "<group>"; };
 		916AB48ED9A451AF29BC665D /* FlappyBird-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlappyBird-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A464C9E14D2A6A370FDEB0 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
-		9F8DF0D859D5D4274B083C32 /* flap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flap.wav; sourceTree = "<group>"; };
+		97CD20503913CB47CA00DCFC /* MusicEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEngine.swift; sourceTree = "<group>"; };
+		9BD39CCB31E1DACD34EB9C7F /* EnvironmentMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentMusicProvider.swift; sourceTree = "<group>"; };
 		B0239F12777A68F98E6193C6 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		B04A6A52C66E7F6A39F565FF /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
-		B6F08D59A8E91F2366A59E1E /* bgm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bgm.wav; sourceTree = "<group>"; };
 		B735E24AE07431ADAF4E955F /* GameScene+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Input.swift"; sourceTree = "<group>"; };
-		D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleNode.swift; sourceTree = "<group>"; };
-		BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRenderer.swift; sourceTree = "<group>"; };
-		DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JungleEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderwaterEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcticEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEnvironmentRenderer.swift; sourceTree = "<group>"; };
-		D42F650C645601D8EAE17468 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
-		D7D7F514C1FDCE1E5E89C556 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
+		B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentMusicManager.swift; sourceTree = "<group>"; };
+		BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFXGenerator.swift; sourceTree = "<group>"; };
+		CB4B136960E902671F8F4BAD /* ClassicEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicEnvironmentRenderer.swift; sourceTree = "<group>"; };
+		D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceMusicProvider.swift; sourceTree = "<group>"; };
+		DA7EA224111E6FAEEA1829FA /* DesertEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertEnvironmentRenderer.swift; sourceTree = "<group>"; };
 		E7EC427936D543BD726587CE /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		EC77221464CB1AEA7123EAE4 /* JungleMusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JungleMusicProvider.swift; sourceTree = "<group>"; };
+		EE92D4174F8F1371C4CA3E7D /* UnderwaterEnvironmentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderwaterEnvironmentRenderer.swift; sourceTree = "<group>"; };
 		F3E4E837046A8DCB62766476 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Spawning.swift"; sourceTree = "<group>"; };
 		FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		43F0D89C176A981533EAA9FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD2EFA03B7AFE80A330F0B85 /* AudioKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C4EECFF203B870699F0C59A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5383CA13CCC423D28605FD /* AudioKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		4DD571C9E50C6CD04F564BA8 /* Sounds */ = {
+		5DEAA722BC97F278EB9B698E /* Environments */ = {
 			isa = PBXGroup;
 			children = (
-				B6F08D59A8E91F2366A59E1E /* bgm.wav */,
-				D42F650C645601D8EAE17468 /* collision.wav */,
-				9F8DF0D859D5D4274B083C32 /* flap.wav */,
-				D7D7F514C1FDCE1E5E89C556 /* score.wav */,
+				232130CA16A53B63147E7FBE /* ArcticEnvironmentRenderer.swift */,
+				CB4B136960E902671F8F4BAD /* ClassicEnvironmentRenderer.swift */,
+				DA7EA224111E6FAEEA1829FA /* DesertEnvironmentRenderer.swift */,
+				2FABBDEF463E09BED9A3D57C /* JungleEnvironmentRenderer.swift */,
+				6C27D27BB2718B8892415B12 /* SpaceEnvironmentRenderer.swift */,
+				EE92D4174F8F1371C4CA3E7D /* UnderwaterEnvironmentRenderer.swift */,
 			);
-			path = Sounds;
+			path = Environments;
 			sourceTree = "<group>";
 		};
 		6F266CC9BEDAC167C27E7BE4 = {
@@ -160,6 +204,12 @@
 			isa = PBXGroup;
 			children = (
 				E7EC427936D543BD726587CE /* AudioManager.swift */,
+				B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */,
+				9BD39CCB31E1DACD34EB9C7F /* EnvironmentMusicProvider.swift */,
+				8D5133F3A8CCC3970EBA4A3A /* MenuMusicProvider.swift */,
+				97CD20503913CB47CA00DCFC /* MusicEngine.swift */,
+				BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */,
+				FC6FCBEB84EFD39F41DCDDEE /* EnvironmentMusic */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -168,29 +218,16 @@
 			isa = PBXGroup;
 			children = (
 				82E0D7E1E193E5FCA1EB7775 /* CharacterRenderer.swift */,
-				BB2C3D4E5F60718293A0B1C2 /* EnvironmentRenderer.swift */,
-				A0B1C2D3E4F50617A8B9C0D1 /* Environments */,
+				2394C713011573591EA13029 /* EnvironmentRenderer.swift */,
 				0F3202C35D079424FCF1F8EF /* GameScene.swift */,
 				B735E24AE07431ADAF4E955F /* GameScene+Input.swift */,
 				FBD6A1D955D81FE3F14BFFB4 /* GameScene+Spawning.swift */,
-				D0E0E6BD03FF906A612A76CD /* ObstacleNode.swift */,
+				8AB35EAA464689B518E9A455 /* ObstacleNode.swift */,
 				FC7A6B44C50574C15BDA5798 /* ParallaxBackground.swift */,
 				1EECA708149E9A1DDF9460E0 /* PlayerNode.swift */,
+				5DEAA722BC97F278EB9B698E /* Environments */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		A0B1C2D3E4F50617A8B9C0D1 /* Environments */ = {
-			isa = PBXGroup;
-			children = (
-				D4A50627B3C4D5E6F708193A /* ArcticEnvironmentRenderer.swift */,
-				DD4E5F60718293A0B1C2D3E4 /* ClassicEnvironmentRenderer.swift */,
-				F6C70849D5E6F708193A2B3C /* DesertEnvironmentRenderer.swift */,
-				FF60718293A0B1C2D3E4F506 /* JungleEnvironmentRenderer.swift */,
-				B8E90A6BF708193A2B3C4D5E /* SpaceEnvironmentRenderer.swift */,
-				B2829304A1B2C3D4E5F60718 /* UnderwaterEnvironmentRenderer.swift */,
-			);
-			path = Environments;
 			sourceTree = "<group>";
 		};
 		9A27F314F54E6B66660BF794 /* Models */ = {
@@ -234,9 +271,21 @@
 			isa = PBXGroup;
 			children = (
 				4394DD11C6F46FD886741F75 /* Assets.xcassets */,
-				4DD571C9E50C6CD04F564BA8 /* Sounds */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FC6FCBEB84EFD39F41DCDDEE /* EnvironmentMusic */ = {
+			isa = PBXGroup;
+			children = (
+				4C76444719C38CCB18FE008B /* ArcticMusicProvider.swift */,
+				0B96F217A616EA27A3F14350 /* ClassicMusicProvider.swift */,
+				4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */,
+				EC77221464CB1AEA7123EAE4 /* JungleMusicProvider.swift */,
+				D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */,
+				4DBE1E24A8288B3A2A7188EE /* UnderwaterMusicProvider.swift */,
+			);
+			path = EnvironmentMusic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +297,7 @@
 			buildPhases = (
 				7241A72F4DAC9577689E4DF0 /* Sources */,
 				8D95031AA2CAA8DD98B5F3A0 /* Resources */,
+				6C4EECFF203B870699F0C59A /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,6 +305,7 @@
 			);
 			name = "FlappyBird-iOS";
 			packageProductDependencies = (
+				68245BA54677E635FE9FC900 /* AudioKit */,
 			);
 			productName = "FlappyBird-iOS";
 			productReference = 528062AAD813524B890C77D6 /* FlappyBird-iOS.app */;
@@ -266,6 +317,7 @@
 			buildPhases = (
 				9E3A093D089CE1F7921DB9ED /* Sources */,
 				B145A5743C8EC4C216225E18 /* Resources */,
+				43F0D89C176A981533EAA9FE /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,6 +325,7 @@
 			);
 			name = "FlappyBird-macOS";
 			packageProductDependencies = (
+				DEEBB6D2BB6A55A216ECE864 /* AudioKit */,
 			);
 			productName = "FlappyBird-macOS";
 			productReference = 916AB48ED9A451AF29BC665D /* FlappyBird-macOS.app */;
@@ -297,6 +350,9 @@
 			);
 			mainGroup = 6F266CC9BEDAC167C27E7BE4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,10 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				111CA6AE1607743AC30F1239 /* Assets.xcassets in Resources */,
-				81CD626986E1A15677C60CA5 /* bgm.wav in Resources */,
-				A6FBB47A5A5538057D9AE092 /* collision.wav in Resources */,
-				45EE090293645E25B1AACC33 /* flap.wav in Resources */,
-				5B747B2FFE230955605D9629 /* score.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,10 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C8159DFD65A7C65591BA03 /* Assets.xcassets in Resources */,
-				49E6B1C0AF30C7ED85D4E645 /* bgm.wav in Resources */,
-				2532AB471041CB5D0CDE9C38 /* collision.wav in Resources */,
-				1B68523204B6110CFEF8EBEB /* flap.wav in Resources */,
-				B6C0C0435F4CDE1980C5C7AC /* score.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,10 +387,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F5C28952BC8FB2B0290BB5 /* ArcticEnvironmentRenderer.swift in Sources */,
+				D2947857DD55429CAAD59C20 /* ArcticMusicProvider.swift in Sources */,
 				B43BB20E535E048F75A50E1A /* AudioManager.swift in Sources */,
 				2AB714376974DC49BEBCA554 /* CharacterRenderer.swift in Sources */,
 				FE77F5EA63863AD7E4044D58 /* CharacterSelectionView.swift in Sources */,
+				25606A0AF462A7C03662CDD9 /* ClassicEnvironmentRenderer.swift in Sources */,
+				F32D09031F597EBCA17036A2 /* ClassicMusicProvider.swift in Sources */,
 				9E4772BD35E4CE368B3A87B9 /* ContentView.swift in Sources */,
+				1C8D88F5A00EA872E6067D7F /* DesertEnvironmentRenderer.swift in Sources */,
+				32CE31330750AAA492A4202A /* DesertMusicProvider.swift in Sources */,
+				55C22B2F43F022A6BD2FE4EF /* EnvironmentMusicManager.swift in Sources */,
+				8E5C9053ADCC051605C9AF3F /* EnvironmentMusicProvider.swift in Sources */,
+				E00B0B19447F0440584A9C24 /* EnvironmentRenderer.swift in Sources */,
 				EA8EF0F1D083699E3F2C6E30 /* EnvironmentSelectionView.swift in Sources */,
 				6DE16527A9151BE44A5803D7 /* FlappyBirdApp.swift in Sources */,
 				FB5C7D10DF1B6F1244E36FD2 /* GameCharacter.swift in Sources */,
@@ -354,18 +411,20 @@
 				0B50B8AD5C3A2C22864668FA /* GameScene.swift in Sources */,
 				DB1D2AEC2EEA7DCADFC8DFD2 /* GameState.swift in Sources */,
 				7400CEF5C90A1DD01A013B8D /* GameplayView.swift in Sources */,
+				6B36B98B097EDC464ECCD137 /* JungleEnvironmentRenderer.swift in Sources */,
+				AF6FC545EC3383CE3E07129D /* JungleMusicProvider.swift in Sources */,
+				5B9185CDC42959E89A2DBD0B /* MenuMusicProvider.swift in Sources */,
+				43D5763F69A0AB53D78C0446 /* MusicEngine.swift in Sources */,
+				B0A253C7302FEB00F88007D9 /* ObstacleNode.swift in Sources */,
 				72441A2685259A05D7CFB5D6 /* ParallaxBackground.swift in Sources */,
 				3302A7B6F484E11C405D360F /* PhysicsCategory.swift in Sources */,
-				A6E63F38D2ECE2F99D3EACF5 /* ObstacleNode.swift in Sources */,
-				AA1B2C3D4E5F607182930A1B /* EnvironmentRenderer.swift in Sources */,
-				CC3D4E5F607182930A1B2C3D /* ClassicEnvironmentRenderer.swift in Sources */,
-				EE5F607182930A1B2C3D4E5F /* JungleEnvironmentRenderer.swift in Sources */,
-				A1718293A0B1C2D3E4F50617 /* UnderwaterEnvironmentRenderer.swift in Sources */,
-				C3940516A2B3C4D5E6F70829 /* ArcticEnvironmentRenderer.swift in Sources */,
-				E5B60738C4D5E6F708193A2B /* DesertEnvironmentRenderer.swift in Sources */,
-				A7D8095AE6F708193A2B3C4D /* SpaceEnvironmentRenderer.swift in Sources */,
 				5F2C8F62C3FED7AF2F331805 /* PlayerNode.swift in Sources */,
+				61345083FDF823C8E0B1EA90 /* SFXGenerator.swift in Sources */,
+				2F733F6FA2D3BB609B3AA2BC /* SpaceEnvironmentRenderer.swift in Sources */,
+				093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */,
 				FD7468EDEACC3AB5FB356DC2 /* TitleView.swift in Sources */,
+				17789F6C18E27A1650A54641 /* UnderwaterEnvironmentRenderer.swift in Sources */,
+				9059DAF524A4DE7DF5EF3630 /* UnderwaterMusicProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,10 +432,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA35A59473A7ECB6EC13D76 /* ArcticEnvironmentRenderer.swift in Sources */,
+				71C2BD5206471EDD93A53090 /* ArcticMusicProvider.swift in Sources */,
 				62C0A8437F7E6A7E6C1E7F8A /* AudioManager.swift in Sources */,
 				66A4DD723957318F554D4D73 /* CharacterRenderer.swift in Sources */,
 				0203464B55CF6B69E7EBDFE7 /* CharacterSelectionView.swift in Sources */,
+				EFAAA889E98C50AF014853AD /* ClassicEnvironmentRenderer.swift in Sources */,
+				6BA0180BCDCBC786FA2EF1AB /* ClassicMusicProvider.swift in Sources */,
 				A82B8D389D09B88AE77EFF01 /* ContentView.swift in Sources */,
+				97378D63F60C9FFA7E54CCF5 /* DesertEnvironmentRenderer.swift in Sources */,
+				0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */,
+				B30B3623FBBDCDB336E6E5F0 /* EnvironmentMusicManager.swift in Sources */,
+				408AA8D79783D2DF0A03C0BD /* EnvironmentMusicProvider.swift in Sources */,
+				62AA744029546166E86E5AB1 /* EnvironmentRenderer.swift in Sources */,
 				5E5DB28EA662E33E9352FD5B /* EnvironmentSelectionView.swift in Sources */,
 				E0C2AEFE3816ECC728D7E465 /* FlappyBirdApp.swift in Sources */,
 				E81186983FCCC8FD0C7C001C /* GameCharacter.swift in Sources */,
@@ -388,18 +456,20 @@
 				8371513B8F971C029C7081CB /* GameScene.swift in Sources */,
 				5C1E3F98A9AE206BC43743C7 /* GameState.swift in Sources */,
 				01A4A63EC01E2AFD4BD19196 /* GameplayView.swift in Sources */,
+				98DC6940F1536EFDAD07205D /* JungleEnvironmentRenderer.swift in Sources */,
+				9DC5FB78C0D719851ACEF363 /* JungleMusicProvider.swift in Sources */,
+				DA905F6CD86EDB81C1D5C9A4 /* MenuMusicProvider.swift in Sources */,
+				8919531FA891FD0AC1D36A60 /* MusicEngine.swift in Sources */,
+				C9FA819FD45FDF6B5C6F3621 /* ObstacleNode.swift in Sources */,
 				C1FD3D385AAF68707D89D98E /* ParallaxBackground.swift in Sources */,
 				7CEBB1E3F9428038CEF49D77 /* PhysicsCategory.swift in Sources */,
-				D1640F430A4AB3A1F4C7B977 /* ObstacleNode.swift in Sources */,
-				AA1B2C3D4E5F607182930A1C /* EnvironmentRenderer.swift in Sources */,
-				CC3D4E5F607182930A1B2C3E /* ClassicEnvironmentRenderer.swift in Sources */,
-				EE5F607182930A1B2C3D4E60 /* JungleEnvironmentRenderer.swift in Sources */,
-				A1718293A0B1C2D3E4F50618 /* UnderwaterEnvironmentRenderer.swift in Sources */,
-				C3940516A2B3C4D5E6F7082A /* ArcticEnvironmentRenderer.swift in Sources */,
-				E5B60738C4D5E6F708193A2C /* DesertEnvironmentRenderer.swift in Sources */,
-				A7D8095AE6F708193A2B3C4E /* SpaceEnvironmentRenderer.swift in Sources */,
 				3E496F62C23B137ED46298D2 /* PlayerNode.swift in Sources */,
+				C9535D52A4607219D41FC91E /* SFXGenerator.swift in Sources */,
+				E323F7C60630E8499B4E57C5 /* SpaceEnvironmentRenderer.swift in Sources */,
+				A3AFDEF35C50E900D94B2D3D /* SpaceMusicProvider.swift in Sources */,
 				8BA42DF723E747DE7E928870 /* TitleView.swift in Sources */,
+				5845F83F1C8F65C1ABA3BDB9 /* UnderwaterEnvironmentRenderer.swift in Sources */,
+				FB9C5AFDB82C505DE0A73CDD /* UnderwaterMusicProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +718,30 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		68245BA54677E635FE9FC900 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		DEEBB6D2BB6A55A216ECE864 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56460C24DB060FC3D0A58B9 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8D4981AD2B4CD5E51F5DF425 /* Project object */;
 }
