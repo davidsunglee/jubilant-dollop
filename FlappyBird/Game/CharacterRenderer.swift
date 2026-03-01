@@ -158,16 +158,65 @@ class CharacterRenderer {
 
     // MARK: - Flying Squirrel
     private static func buildFlyingSquirrel(in container: SKNode) {
-        let body = SKShapeNode(rectOf: CGSize(width: 40, height: 20), cornerRadius: 6)
+        // Body - wide brown ellipse
+        let body = SKShapeNode(ellipseOf: CGSize(width: 34, height: 18))
         body.fillColor = .brown
         body.strokeColor = SKColor(red: 0.4, green: 0.2, blue: 0.1, alpha: 1)
-        body.lineWidth = 2
+        body.lineWidth = 1.5
         container.addChild(body)
 
-        let wing = SKShapeNode(ellipseOf: CGSize(width: 16, height: 6))
-        wing.fillColor = SKColor.brown.withAlphaComponent(0.7)
-        wing.strokeColor = .clear
-        wing.position = CGPoint(x: -12, y: 3)
+        // Belly - lighter brown
+        let belly = SKShapeNode(ellipseOf: CGSize(width: 22, height: 10))
+        belly.fillColor = SKColor(red: 0.76, green: 0.6, blue: 0.42, alpha: 1)
+        belly.strokeColor = .clear
+        belly.position = CGPoint(x: 0, y: -2)
+        container.addChild(belly)
+
+        // Head - small rounded shape extending right
+        let head = SKShapeNode(circleOfRadius: 8)
+        head.fillColor = .brown
+        head.strokeColor = SKColor(red: 0.4, green: 0.2, blue: 0.1, alpha: 1)
+        head.lineWidth = 1
+        head.position = CGPoint(x: 16, y: 4)
+        container.addChild(head)
+
+        // Big round eyes (squirrels have large eyes)
+        let eye = SKShapeNode(circleOfRadius: 3.5)
+        eye.fillColor = .white
+        eye.strokeColor = .darkGray
+        eye.lineWidth = 0.5
+        eye.position = CGPoint(x: 19, y: 6)
+        container.addChild(eye)
+
+        let pupil = SKShapeNode(circleOfRadius: 2)
+        pupil.fillColor = .black
+        pupil.strokeColor = .clear
+        pupil.position = CGPoint(x: 20, y: 6)
+        container.addChild(pupil)
+
+        // Small nose
+        let nose = SKShapeNode(circleOfRadius: 1.5)
+        nose.fillColor = SKColor(red: 0.3, green: 0.15, blue: 0.05, alpha: 1)
+        nose.strokeColor = .clear
+        nose.position = CGPoint(x: 23, y: 3)
+        container.addChild(nose)
+
+        // Bushy tail - overlapping ellipses curving up-left
+        for i in 0..<3 {
+            let segment = SKShapeNode(ellipseOf: CGSize(width: 8, height: 6))
+            segment.fillColor = SKColor(red: 0.5, green: 0.3, blue: 0.15, alpha: 0.9)
+            segment.strokeColor = SKColor(red: 0.4, green: 0.2, blue: 0.1, alpha: 1)
+            segment.lineWidth = 0.5
+            segment.position = CGPoint(x: -17 - CGFloat(i) * 3, y: CGFloat(i) * 5)
+            container.addChild(segment)
+        }
+
+        // Membrane wings - flat wide shape
+        let wing = SKShapeNode(ellipseOf: CGSize(width: 20, height: 5))
+        wing.fillColor = SKColor(red: 0.6, green: 0.4, blue: 0.2, alpha: 0.7)
+        wing.strokeColor = SKColor(red: 0.4, green: 0.2, blue: 0.1, alpha: 0.5)
+        wing.lineWidth = 0.5
+        wing.position = CGPoint(x: 0, y: 10)
         wing.name = "wing"
         container.addChild(wing)
         addWingAnimation(to: wing, range: 3, duration: 0.25)
