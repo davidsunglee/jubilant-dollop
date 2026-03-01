@@ -10,39 +10,43 @@ struct EnvironmentSelectionView: View {
         ZStack {
             MenuBackgroundView(tint: .warm)
 
-            VStack(spacing: 20) {
-                Text("Select Environment")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(.primary)
-                    .offset(y: headerVisible ? 0 : -15)
-                    .opacity(headerVisible ? 1 : 0)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Select Environment")
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                        .foregroundStyle(.primary)
+                        .offset(y: headerVisible ? 0 : -15)
+                        .opacity(headerVisible ? 1 : 0)
 
-                LazyVGrid(columns: [
-                    GridItem(.flexible()),
-                    GridItem(.flexible())
-                ], spacing: 16) {
-                    ForEach(GameEnvironment.allCases) { environment in
-                        environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
-                            .onTapGesture {
-                                selectedEnvironment = environment
-                                router.selectEnvironment(environment)
-                            }
+                    LazyVGrid(columns: [
+                        GridItem(.flexible()),
+                        GridItem(.flexible())
+                    ], spacing: 16) {
+                        ForEach(GameEnvironment.allCases) { environment in
+                            environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
+                                .onTapGesture {
+                                    selectedEnvironment = environment
+                                    router.selectEnvironment(environment)
+                                }
+                        }
+                    }
+                    .frame(maxWidth: 600)
+                    .padding(.horizontal)
+                    .opacity(cardsVisible ? 1 : 0)
+
+                    if selectedEnvironment != nil {
+                        Button {
+                            router.startGame()
+                        } label: {
+                            Text("Start")
+                        }
+                        .buttonStyle(GlassButtonStyle(accentColor: .green))
+                        .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
                 }
-                .frame(maxWidth: 600)
-                .padding()
-                .opacity(cardsVisible ? 1 : 0)
-
-                if selectedEnvironment != nil {
-                    Button {
-                        router.startGame()
-                    } label: {
-                        Text("Start")
-                    }
-                    .buttonStyle(GlassButtonStyle(accentColor: .green))
-                    .transition(.opacity.combined(with: .move(edge: .bottom)))
-                }
+                .padding(.vertical)
             }
+            .scrollIndicators(.hidden)
 
             // Back button
             VStack {
