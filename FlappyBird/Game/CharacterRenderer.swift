@@ -381,18 +381,94 @@ class CharacterRenderer {
 
     // MARK: - Bat
     private static func buildBat(in container: SKNode) {
-        let body = SKShapeNode(circleOfRadius: 12)
+        // Body - dark grey inverted triangle / downward oval
+        let body = SKShapeNode(ellipseOf: CGSize(width: 16, height: 20))
         body.fillColor = .darkGray
         body.strokeColor = .black
-        body.lineWidth = 2
+        body.lineWidth = 1.5
         container.addChild(body)
 
-        let wing = SKShapeNode(ellipseOf: CGSize(width: 10, height: 7))
-        wing.fillColor = SKColor.darkGray.withAlphaComponent(0.7)
-        wing.strokeColor = .clear
-        wing.position = CGPoint(x: -7, y: 4)
+        // Belly - slightly lighter
+        let belly = SKShapeNode(ellipseOf: CGSize(width: 10, height: 12))
+        belly.fillColor = SKColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+        belly.strokeColor = .clear
+        belly.position = CGPoint(x: 0, y: -2)
+        container.addChild(belly)
+
+        // Large pointed ears
+        for dx in [-5, 5] as [CGFloat] {
+            let earPath = CGMutablePath()
+            earPath.move(to: CGPoint(x: dx - 3, y: 8))
+            earPath.addLine(to: CGPoint(x: dx, y: 18))
+            earPath.addLine(to: CGPoint(x: dx + 3, y: 8))
+            earPath.closeSubpath()
+            let ear = SKShapeNode(path: earPath)
+            ear.fillColor = .darkGray
+            ear.strokeColor = .black
+            ear.lineWidth = 1
+            container.addChild(ear)
+
+            // Inner ear - pinkish
+            let innerEarPath = CGMutablePath()
+            innerEarPath.move(to: CGPoint(x: dx - 1.5, y: 10))
+            innerEarPath.addLine(to: CGPoint(x: dx, y: 16))
+            innerEarPath.addLine(to: CGPoint(x: dx + 1.5, y: 10))
+            innerEarPath.closeSubpath()
+            let innerEar = SKShapeNode(path: innerEarPath)
+            innerEar.fillColor = SKColor(red: 0.6, green: 0.4, blue: 0.4, alpha: 1)
+            innerEar.strokeColor = .clear
+            container.addChild(innerEar)
+        }
+
+        // Tiny eyes - reddish
+        for dx in [-4, 4] as [CGFloat] {
+            let eye = SKShapeNode(circleOfRadius: 1.5)
+            eye.fillColor = SKColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1)
+            eye.strokeColor = .clear
+            eye.position = CGPoint(x: dx, y: 4)
+            container.addChild(eye)
+        }
+
+        // Small fangs
+        for dx in [-2, 2] as [CGFloat] {
+            let fangPath = CGMutablePath()
+            fangPath.move(to: CGPoint(x: dx - 1, y: 0))
+            fangPath.addLine(to: CGPoint(x: dx, y: -4))
+            fangPath.addLine(to: CGPoint(x: dx + 1, y: 0))
+            fangPath.closeSubpath()
+            let fang = SKShapeNode(path: fangPath)
+            fang.fillColor = .white
+            fang.strokeColor = .clear
+            container.addChild(fang)
+        }
+
+        // Large angular membrane wings (triangular)
+        let wingPath = CGMutablePath()
+        wingPath.move(to: CGPoint(x: -6, y: 6))
+        wingPath.addLine(to: CGPoint(x: -22, y: 10))
+        wingPath.addLine(to: CGPoint(x: -18, y: -2))
+        wingPath.addLine(to: CGPoint(x: -6, y: -4))
+        wingPath.closeSubpath()
+        let wing = SKShapeNode(path: wingPath)
+        wing.fillColor = SKColor(red: 0.3, green: 0.3, blue: 0.35, alpha: 0.85)
+        wing.strokeColor = .black
+        wing.lineWidth = 0.5
         wing.name = "wing"
         container.addChild(wing)
+
+        // Right wing (mirrored, decorative - no animation)
+        let rightWingPath = CGMutablePath()
+        rightWingPath.move(to: CGPoint(x: 6, y: 6))
+        rightWingPath.addLine(to: CGPoint(x: 22, y: 10))
+        rightWingPath.addLine(to: CGPoint(x: 18, y: -2))
+        rightWingPath.addLine(to: CGPoint(x: 6, y: -4))
+        rightWingPath.closeSubpath()
+        let rightWing = SKShapeNode(path: rightWingPath)
+        rightWing.fillColor = SKColor(red: 0.3, green: 0.3, blue: 0.35, alpha: 0.85)
+        rightWing.strokeColor = .black
+        rightWing.lineWidth = 0.5
+        container.addChild(rightWing)
+
         addWingAnimation(to: wing, range: 8, duration: 0.18)
     }
 
