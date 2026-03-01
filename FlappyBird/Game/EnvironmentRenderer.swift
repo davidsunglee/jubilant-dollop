@@ -11,6 +11,10 @@ protocol EnvironmentRenderer {
     /// Also sets up ParallaxBackground layers.
     func buildBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground)
 
+    /// Build miniature background layers for card preview (170x100pt).
+    /// Uses the same ParallaxBackground system but with card-scaled geometry.
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground)
+
     /// Build a pair of obstacles (top + bottom) with gap.
     /// Returns an SKNode with physics bodies configured.
     func buildObstacle(sceneHeight: CGFloat, gapCenterY: CGFloat, gapHeight: CGFloat, pipeWidth: CGFloat) -> SKNode
