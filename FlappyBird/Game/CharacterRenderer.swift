@@ -107,21 +107,19 @@ class CharacterRenderer {
             container.addChild(nostril)
         }
 
-        // Eyes - beady
-        for dy in [4] as [CGFloat] {
-            let eye = SKShapeNode(circleOfRadius: 2.5)
-            eye.fillColor = .white
-            eye.strokeColor = .darkGray
-            eye.lineWidth = 0.5
-            eye.position = CGPoint(x: 6, y: dy)
-            container.addChild(eye)
+        // Eye - beady (side view, one visible)
+        let eye = SKShapeNode(circleOfRadius: 2.5)
+        eye.fillColor = .white
+        eye.strokeColor = .darkGray
+        eye.lineWidth = 0.5
+        eye.position = CGPoint(x: 6, y: 4)
+        container.addChild(eye)
 
-            let pupil = SKShapeNode(circleOfRadius: 1.5)
-            pupil.fillColor = .black
-            pupil.strokeColor = .clear
-            pupil.position = CGPoint(x: 7, y: dy)
-            container.addChild(pupil)
-        }
+        let pupil = SKShapeNode(circleOfRadius: 1.5)
+        pupil.fillColor = .black
+        pupil.strokeColor = .clear
+        pupil.position = CGPoint(x: 7, y: 4)
+        container.addChild(pupil)
 
         // Ears - two small triangles on top
         for dx in [-5, 5] as [CGFloat] {
@@ -456,7 +454,7 @@ class CharacterRenderer {
         wing.name = "wing"
         container.addChild(wing)
 
-        // Right wing (mirrored, decorative - no animation)
+        // Right wing (mirrored, also animated)
         let rightWingPath = CGMutablePath()
         rightWingPath.move(to: CGPoint(x: 6, y: 6))
         rightWingPath.addLine(to: CGPoint(x: 22, y: 10))
@@ -467,9 +465,11 @@ class CharacterRenderer {
         rightWing.fillColor = SKColor(red: 0.3, green: 0.3, blue: 0.35, alpha: 0.85)
         rightWing.strokeColor = .black
         rightWing.lineWidth = 0.5
+        rightWing.name = "wing"
         container.addChild(rightWing)
 
         addWingAnimation(to: wing, range: 8, duration: 0.18)
+        addWingAnimation(to: rightWing, range: 8, duration: 0.18)
     }
 
     // MARK: - Wing Animation Helper
@@ -488,7 +488,11 @@ class CharacterRenderer {
     typealias PlatformImage = NSImage
     #endif
 
+    private static var imageCache: [GameCharacter: PlatformImage] = [:]
+
     static func renderToImage(for character: GameCharacter, size: CGSize = CGSize(width: 80, height: 80)) -> PlatformImage? {
+        if let cached = imageCache[character] { return cached }
+
         let scene = SKScene(size: size)
         scene.backgroundColor = .clear
 
@@ -500,10 +504,13 @@ class CharacterRenderer {
         guard let texture = view.texture(from: scene) else { return nil }
 
         #if os(iOS)
-        return UIImage(cgImage: texture.cgImage())
+        let image = UIImage(cgImage: texture.cgImage())
         #elseif os(macOS)
         let cgImage = texture.cgImage()
-        return NSImage(cgImage: cgImage, size: size)
+        let image = NSImage(cgImage: cgImage, size: size)
         #endif
+
+        imageCache[character] = image
+        return image
     }
 }

@@ -91,8 +91,8 @@ class PlayerNode: SKNode {
             }
         })
 
-        // Stop wing animation
-        if let wing = childNode(withName: ".//wing") {
+        // Stop wing animations (bat has two wing nodes)
+        enumerateChildNodes(withName: ".//wing") { wing, _ in
             wing.removeAllActions()
         }
     }
