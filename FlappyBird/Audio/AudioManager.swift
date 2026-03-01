@@ -3,46 +3,48 @@ import SpriteKit
 
 class AudioManager {
     static let shared = AudioManager()
-    private var bgmPlayer: AVAudioPlayer?
 
     private init() {}
 
-    // MARK: - Background Music
+    // MARK: - Menu Music
 
-    func playBGM() {
-        guard let url = Bundle.main.url(forResource: "bgm", withExtension: "wav") else { return }
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            // Skip placeholder stubs — looping a tiny file produces constant beeping
-            guard player.duration > 1.0 else { return }
-            player.numberOfLoops = -1
-            player.volume = 0.3
-            player.play()
-            bgmPlayer = player
-        } catch {
-            print("BGM playback error: \(error)")
+    func playMenuMusic(forState state: GameState) {
+        switch state {
+        case .title:
+            EnvironmentMusicManager.shared.stop()
+            MenuMusicProvider.shared.setLayer(1)
+        case .characterSelection:
+            MenuMusicProvider.shared.setLayer(2)
+        case .environmentSelection:
+            MenuMusicProvider.shared.setLayer(3)
+        case .playing, .gameOver:
+            break
         }
     }
 
-    func stopBGM() {
-        bgmPlayer?.stop()
-        bgmPlayer = nil
+    // MARK: - Gameplay Music
+
+    func playEnvironmentMusic(for environment: GameEnvironment) {
+        MenuMusicProvider.shared.stopPlaying()
+        EnvironmentMusicManager.shared.play(environment: environment)
     }
 
-    // MARK: - Sound Effects (via SKAction for zero-latency)
-
-    func playFlapSound(on scene: SKScene) {
-        let action = SKAction.playSoundFileNamed("flap.wav", waitForCompletion: false)
-        scene.run(action)
+    func stopMusic() {
+        MenuMusicProvider.shared.stopPlaying()
+        EnvironmentMusicManager.shared.stop()
     }
 
-    func playScoreSound(on scene: SKScene) {
-        let action = SKAction.playSoundFileNamed("score.wav", waitForCompletion: false)
-        scene.run(action)
+    // MARK: - Sound Effects
+
+    func playFlapSound() {
+        SFXGenerator.shared.playFlap()
     }
 
-    func playCollisionSound(on scene: SKScene) {
-        let action = SKAction.playSoundFileNamed("collision.wav", waitForCompletion: false)
-        scene.run(action)
+    func playScoreSound() {
+        SFXGenerator.shared.playScore()
+    }
+
+    func playCollisionSound() {
+        SFXGenerator.shared.playCollision()
     }
 }
