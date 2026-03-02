@@ -12,22 +12,29 @@ extension GameScene {
         AudioManager.shared.playFlapSound()
     }
 
+    private func handleInput(forPlayer playerIndex: Int) {
+        if isReady {
+            activateGameplay()
+            handleJump(forPlayer: playerIndex)
+        } else if isGameActive {
+            handleJump(forPlayer: playerIndex)
+        }
+    }
+
     // MARK: - iOS / iPadOS Touch Input
     #if os(iOS)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard isGameActive else { return }
-
         for touch in touches {
             let location = touch.location(in: self)
 
             if router.config.playerCount == 1 {
-                handleJump(forPlayer: 1)
+                handleInput(forPlayer: 1)
             } else {
                 // 2P: left half = P1, right half = P2
                 if location.x < size.width / 2 {
-                    handleJump(forPlayer: 1)
+                    handleInput(forPlayer: 1)
                 } else {
-                    handleJump(forPlayer: 2)
+                    handleInput(forPlayer: 2)
                 }
             }
         }
@@ -38,19 +45,18 @@ extension GameScene {
     #if os(macOS)
     override func keyDown(with event: NSEvent) {
         // Intentionally do not call super to suppress macOS beep on unhandled keys
-        guard isGameActive else { return }
         guard let chars = event.charactersIgnoringModifiers?.lowercased() else { return }
 
         if router.config.playerCount == 1 {
             if chars == " " {
-                handleJump(forPlayer: 1)
+                handleInput(forPlayer: 1)
             }
         } else {
             switch chars {
             case "a":
-                handleJump(forPlayer: 1)
+                handleInput(forPlayer: 1)
             case "l":
-                handleJump(forPlayer: 2)
+                handleInput(forPlayer: 2)
             default:
                 break
             }
