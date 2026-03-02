@@ -20,6 +20,7 @@ struct EnvironmentSelectionView: View {
 
                     LazyVGrid(columns: [
                         GridItem(.flexible()),
+                        GridItem(.flexible()),
                         GridItem(.flexible())
                     ], spacing: 16) {
                         ForEach(GameEnvironment.allCases) { environment in
@@ -30,7 +31,7 @@ struct EnvironmentSelectionView: View {
                                 }
                         }
                     }
-                    .frame(maxWidth: 600)
+                    .frame(maxWidth: 750)
                     .padding(.horizontal)
                     .opacity(cardsVisible ? 1 : 0)
 
