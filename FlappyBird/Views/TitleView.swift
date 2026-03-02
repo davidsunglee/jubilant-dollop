@@ -1,19 +1,26 @@
 import SwiftUI
+import SpriteKit
 
 struct TitleView: View {
     @ObservedObject var router: GameRouter
+    @StateObject private var sceneHolder = TitleBackgroundSceneHolder()
     @State private var titleVisible = false
     @State private var buttonsVisible = false
 
     var body: some View {
         ZStack {
-            MenuBackgroundView(tint: .neutral)
+            SpriteView(scene: sceneHolder.scene)
+                .ignoresSafeArea()
+                .transaction { $0.animation = nil }
+
+            Color.black.opacity(0.25)
+                .ignoresSafeArea()
 
             VStack(spacing: 40) {
                 Text("Flappy Bird")
                     .font(.system(size: 56, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 3)
+                    .shadow(color: .black.opacity(0.3), radius: 6, x: 0, y: 3)
                     .offset(y: titleVisible ? 0 : 20)
                     .opacity(titleVisible ? 1 : 0)
 
@@ -37,6 +44,7 @@ struct TitleView: View {
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .title)
+            sceneHolder.scene.isPaused = false
             withAnimation(.easeOut(duration: 0.6)) {
                 titleVisible = true
             }
@@ -47,6 +55,7 @@ struct TitleView: View {
         .onDisappear {
             titleVisible = false
             buttonsVisible = false
+            sceneHolder.scene.isPaused = true
         }
     }
 }
