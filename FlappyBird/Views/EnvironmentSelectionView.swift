@@ -2,7 +2,7 @@ import SwiftUI
 
 struct EnvironmentSelectionView: View {
     @ObservedObject var router: GameRouter
-    @State private var selectedEnvironment: GameEnvironment? = nil
+    @State private var tappedEnvironment: GameEnvironment? = nil
     @State private var headerVisible = false
     @State private var cardsVisible = false
 
@@ -10,44 +10,35 @@ struct EnvironmentSelectionView: View {
         ZStack {
             MenuBackgroundView(tint: .warm)
 
-            ScrollView {
-                VStack(spacing: 20) {
-                    Text("Select Environment")
-                        .font(.system(size: 36, weight: .bold, design: .rounded))
-                        .foregroundStyle(.primary)
-                        .offset(y: headerVisible ? 0 : -15)
-                        .opacity(headerVisible ? 1 : 0)
+            VStack(spacing: 20) {
+                Text("Select Environment")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundStyle(.primary)
+                    .offset(y: headerVisible ? 0 : -15)
+                    .opacity(headerVisible ? 1 : 0)
 
-                    LazyVGrid(columns: [
-                        GridItem(.flexible()),
-                        GridItem(.flexible()),
-                        GridItem(.flexible())
-                    ], spacing: 16) {
-                        ForEach(GameEnvironment.allCases) { environment in
-                            environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
-                                .onTapGesture {
-                                    selectedEnvironment = environment
-                                    router.selectEnvironment(environment)
+                LazyVGrid(columns: [
+                    GridItem(.flexible()),
+                    GridItem(.flexible()),
+                    GridItem(.flexible())
+                ], spacing: 16) {
+                    ForEach(GameEnvironment.allCases) { environment in
+                        environmentCard(environment: environment, isSelected: tappedEnvironment == environment)
+                            .onTapGesture {
+                                guard tappedEnvironment == nil else { return }
+                                tappedEnvironment = environment
+                                router.selectEnvironment(environment)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    router.startGame()
                                 }
-                        }
-                    }
-                    .frame(maxWidth: 750)
-                    .padding(.horizontal)
-                    .opacity(cardsVisible ? 1 : 0)
-
-                    if selectedEnvironment != nil {
-                        Button {
-                            router.startGame()
-                        } label: {
-                            Text("Start")
-                        }
-                        .buttonStyle(GlassButtonStyle(accentColor: .green))
-                        .transition(.opacity.combined(with: .move(edge: .bottom)))
+                            }
                     }
                 }
-                .padding(.vertical)
+                .frame(maxWidth: 750)
+                .padding(.horizontal)
+                .opacity(cardsVisible ? 1 : 0)
             }
-            .scrollIndicators(.hidden)
+            .padding(.vertical)
 
             // Back button
             VStack {
@@ -61,7 +52,7 @@ struct EnvironmentSelectionView: View {
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .environmentSelection)
-            selectedEnvironment = nil
+            tappedEnvironment = nil
             withAnimation(.easeOut(duration: 0.4)) {
                 headerVisible = true
             }
