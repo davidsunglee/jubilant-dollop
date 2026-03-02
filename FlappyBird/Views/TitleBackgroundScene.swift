@@ -47,3 +47,13 @@ class TitleBackgroundScene: SKScene {
         parallax?.update(deltaTime: min(deltaTime, 0.1))
     }
 }
+
+class TitleBackgroundSceneHolder: ObservableObject {
+    let scene: TitleBackgroundScene
+
+    init() {
+        let scene = TitleBackgroundScene(size: CGSize(width: 400, height: 800))
+        scene.scaleMode = .resizeFill
+        self.scene = scene
+    }
+}
