@@ -13,6 +13,8 @@
 		A1B2C3D4E5F6A7B8C9D0E1F4 /* LiveCharacterPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */; };
 		B1C2D3E4F5A6B7C8D9E0F1A3 /* LiveEnvironmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6B7C8D9E0F1A2 /* LiveEnvironmentPreview.swift */; };
 		B1C2D3E4F5A6B7C8D9E0F1A4 /* LiveEnvironmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6B7C8D9E0F1A2 /* LiveEnvironmentPreview.swift */; };
+		C1D2E3F4A5B6C7D8E9F0A1B3 /* TitleBackgroundScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B6C7D8E9F0A1B2 /* TitleBackgroundScene.swift */; };
+		C1D2E3F4A5B6C7D8E9F0A1B4 /* TitleBackgroundScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B6C7D8E9F0A1B2 /* TitleBackgroundScene.swift */; };
 		068BA9F9AAFB7E51FC0FEBDC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6A60552DC42B7E4797653E /* SoundpipeAudioKit */; };
 		093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029FBD644CE72D17C75A388 /* SpaceMusicProvider.swift */; };
 		0ACBF8A18F9D49960A7C067A /* DesertMusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D7EC5E56BE07CAFBCC017 /* DesertMusicProvider.swift */; };
@@ -131,6 +133,7 @@
 		B1C2D3E4F5A6B7C8D9E0F1A2 /* LiveEnvironmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEnvironmentPreview.swift; sourceTree = "<group>"; };
 		B0239F12777A68F98E6193C6 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		B04A6A52C66E7F6A39F565FF /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		C1D2E3F4A5B6C7D8E9F0A1B2 /* TitleBackgroundScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBackgroundScene.swift; sourceTree = "<group>"; };
 		B735E24AE07431ADAF4E955F /* GameScene+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Input.swift"; sourceTree = "<group>"; };
 		B9E5E3BBD00E7E9BD01B3209 /* EnvironmentMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentMusicManager.swift; sourceTree = "<group>"; };
 		BB1A7DFAE69741BFCCE928A1 /* SFXGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFXGenerator.swift; sourceTree = "<group>"; };
@@ -215,6 +218,7 @@
 				A1B2C3D4E5F6A7B8C9D0E1F2 /* LiveCharacterPreview.swift */,
 				B1C2D3E4F5A6B7C8D9E0F1A2 /* LiveEnvironmentPreview.swift */,
 				DD22222222222222DDDDDDDD /* MenuBackgroundView.swift */,
+				C1D2E3F4A5B6C7D8E9F0A1B2 /* TitleBackgroundScene.swift */,
 				B04A6A52C66E7F6A39F565FF /* TitleView.swift */,
 			);
 			path = Views;
@@ -448,6 +452,7 @@
 				61345083FDF823C8E0B1EA90 /* SFXGenerator.swift in Sources */,
 				2F733F6FA2D3BB609B3AA2BC /* SpaceEnvironmentRenderer.swift in Sources */,
 				093DEDADA344DF9747A1074F /* SpaceMusicProvider.swift in Sources */,
+				C1D2E3F4A5B6C7D8E9F0A1B3 /* TitleBackgroundScene.swift in Sources */,
 				FD7468EDEACC3AB5FB356DC2 /* TitleView.swift in Sources */,
 				17789F6C18E27A1650A54641 /* UnderwaterEnvironmentRenderer.swift in Sources */,
 				9059DAF524A4DE7DF5EF3630 /* UnderwaterMusicProvider.swift in Sources */,
@@ -497,6 +502,7 @@
 				C9535D52A4607219D41FC91E /* SFXGenerator.swift in Sources */,
 				E323F7C60630E8499B4E57C5 /* SpaceEnvironmentRenderer.swift in Sources */,
 				A3AFDEF35C50E900D94B2D3D /* SpaceMusicProvider.swift in Sources */,
+				C1D2E3F4A5B6C7D8E9F0A1B4 /* TitleBackgroundScene.swift in Sources */,
 				8BA42DF723E747DE7E928870 /* TitleView.swift in Sources */,
 				5845F83F1C8F65C1ABA3BDB9 /* UnderwaterEnvironmentRenderer.swift in Sources */,
 				FB9C5AFDB82C505DE0A73CDD /* UnderwaterMusicProvider.swift in Sources */,
