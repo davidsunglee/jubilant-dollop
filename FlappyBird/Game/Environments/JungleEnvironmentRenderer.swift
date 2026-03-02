@@ -88,6 +88,88 @@ class JungleEnvironmentRenderer: EnvironmentRenderer {
         }
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = .systemGreen
+
+        // Far layer: mini canopy circles (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            for j in 0..<4 {
+                let canopy = SKShapeNode(circleOfRadius: CGFloat.random(in: 14...22))
+                canopy.fillColor = SKColor(red: 0.05, green: CGFloat.random(in: 0.3...0.45), blue: 0.05, alpha: 0.8)
+                canopy.strokeColor = .clear
+                canopy.position = CGPoint(
+                    x: CGFloat(j) * size.width / 3,
+                    y: size.height - CGFloat.random(in: 4...14)
+                )
+                container.addChild(canopy)
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Mid layer: mini hanging vines (0.6x)
+        var midNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            for j in 0..<3 {
+                let vineHeight = CGFloat.random(in: 15...35)
+                let vine = SKShapeNode(rectOf: CGSize(width: 1.5, height: vineHeight), cornerRadius: 0.5)
+                vine.fillColor = SKColor(red: 0.15, green: 0.5, blue: 0.1, alpha: 0.7)
+                vine.strokeColor = .clear
+                vine.position = CGPoint(
+                    x: CGFloat(j) * size.width / 2 + CGFloat.random(in: 0...15),
+                    y: size.height - vineHeight / 2
+                )
+                container.addChild(vine)
+
+                let leaf = SKShapeNode(ellipseOf: CGSize(width: 4, height: 2.5))
+                leaf.fillColor = SKColor(red: 0.1, green: 0.6, blue: 0.1, alpha: 0.8)
+                leaf.strokeColor = .clear
+                leaf.position = CGPoint(x: vine.position.x, y: size.height - vineHeight - 1)
+                container.addChild(leaf)
+            }
+
+            container.zPosition = -6
+            scene.addChild(container)
+            midNodes.append(container)
+        }
+        parallax.addLayer(nodes: midNodes, speedMultiplier: 0.6, width: size.width)
+
+        // Animated: mini fireflies
+        for _ in 0..<3 {
+            let firefly = SKShapeNode(circleOfRadius: 1.5)
+            firefly.fillColor = SKColor(red: 1.0, green: 0.9, blue: 0.3, alpha: 1)
+            firefly.strokeColor = .clear
+            firefly.position = CGPoint(
+                x: CGFloat.random(in: 0...size.width),
+                y: CGFloat.random(in: size.height * 0.3...size.height * 0.7)
+            )
+            firefly.zPosition = -4
+            firefly.alpha = 0.3
+            scene.addChild(firefly)
+
+            let glow = SKAction.fadeAlpha(to: 1.0, duration: TimeInterval.random(in: 0.8...1.5))
+            let dim = SKAction.fadeAlpha(to: 0.2, duration: TimeInterval.random(in: 0.8...1.5))
+            let drift = SKAction.moveBy(
+                x: CGFloat.random(in: -10...10),
+                y: CGFloat.random(in: -8...8),
+                duration: 3.0
+            )
+            let driftBack = drift.reversed()
+            firefly.run(SKAction.repeatForever(SKAction.sequence([glow, dim])))
+            firefly.run(SKAction.repeatForever(SKAction.sequence([drift, driftBack])))
+        }
+    }
+
     // MARK: - Obstacle
 
     func buildObstacle(sceneHeight: CGFloat, gapCenterY: CGFloat, gapHeight: CGFloat, pipeWidth: CGFloat) -> SKNode {

@@ -10,42 +10,43 @@ struct EnvironmentSelectionView: View {
         ZStack {
             MenuBackgroundView(tint: .warm)
 
-            VStack(spacing: 20) {
-                Text("Select Environment")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(.primary)
-                    .offset(y: headerVisible ? 0 : -15)
-                    .opacity(headerVisible ? 1 : 0)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Select Environment")
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                        .foregroundStyle(.primary)
+                        .offset(y: headerVisible ? 0 : -15)
+                        .opacity(headerVisible ? 1 : 0)
 
-                LazyVGrid(columns: [
-                    GridItem(.flexible()),
-                    GridItem(.flexible()),
-                    GridItem(.flexible())
-                ], spacing: 16) {
-                    ForEach(GameEnvironment.allCases) { environment in
-                        environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
-                            .onTapGesture {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    LazyVGrid(columns: [
+                        GridItem(.flexible()),
+                        GridItem(.flexible())
+                    ], spacing: 16) {
+                        ForEach(GameEnvironment.allCases) { environment in
+                            environmentCard(environment: environment, isSelected: selectedEnvironment == environment)
+                                .onTapGesture {
                                     selectedEnvironment = environment
                                     router.selectEnvironment(environment)
                                 }
-                            }
+                        }
                     }
-                }
-                .frame(maxWidth: 600)
-                .padding()
-                .opacity(cardsVisible ? 1 : 0)
+                    .frame(maxWidth: 600)
+                    .padding(.horizontal)
+                    .opacity(cardsVisible ? 1 : 0)
 
-                if selectedEnvironment != nil {
-                    Button {
-                        router.startGame()
-                    } label: {
-                        Text("Start")
+                    if selectedEnvironment != nil {
+                        Button {
+                            router.startGame()
+                        } label: {
+                            Text("Start")
+                        }
+                        .buttonStyle(GlassButtonStyle(accentColor: .green))
+                        .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
-                    .buttonStyle(GlassButtonStyle(accentColor: .green))
-                    .transition(.opacity.combined(with: .move(edge: .bottom)))
                 }
+                .padding(.vertical)
             }
+            .scrollIndicators(.hidden)
 
             // Back button
             VStack {
@@ -75,36 +76,18 @@ struct EnvironmentSelectionView: View {
 
     private func environmentCard(environment: GameEnvironment, isSelected: Bool) -> some View {
         VStack(spacing: 8) {
-            Group {
-                if let image = EnvironmentPreviewRenderer.renderToImage(for: environment, size: CGSize(width: 160, height: 80)) {
-                    #if os(iOS)
-                    Image(uiImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                    #elseif os(macOS)
-                    Image(nsImage: image)
-                        .resizable()
-                        .interpolation(.high)
-                        .frame(height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                    #endif
-                } else {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(environment.backgroundColor))
-                        .frame(height: 80)
-                }
-            }
+            LiveEnvironmentPreview(environment: environment)
 
             Text(environment.displayName)
                 .font(.headline)
         }
-        .frame(width: 160, height: 130)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
         .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.clear, radius: 12)
         .scaleEffect(isSelected ? 1.05 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
     }
 }

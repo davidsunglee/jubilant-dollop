@@ -92,6 +92,94 @@ class ArcticEnvironmentRenderer: EnvironmentRenderer {
         }
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = SKColor(red: 0.85, green: 0.95, blue: 1.0, alpha: 1)
+
+        // Far layer: mini mountain peaks (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let mountains: [(x: CGFloat, baseWidth: CGFloat, peakHeight: CGFloat)] = [
+                (size.width * 0.15, 40, 40),
+                (size.width * 0.45, 55, 52),
+                (size.width * 0.75, 35, 35),
+                (size.width * 0.95, 45, 42),
+            ]
+            for m in mountains {
+                let path = CGMutablePath()
+                path.move(to: CGPoint(x: m.x - m.baseWidth / 2, y: 8))
+                path.addLine(to: CGPoint(x: m.x, y: 8 + m.peakHeight))
+                path.addLine(to: CGPoint(x: m.x + m.baseWidth / 2, y: 8))
+                path.closeSubpath()
+
+                let mountain = SKShapeNode(path: path)
+                mountain.fillColor = SKColor(white: 0.95, alpha: 1)
+                mountain.strokeColor = SKColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1)
+                mountain.lineWidth = 0.5
+                container.addChild(mountain)
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Mid layer: mini snow drifts (0.6x)
+        var midNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let driftPositions: [(x: CGFloat, w: CGFloat, h: CGFloat)] = [
+                (size.width * 0.25, 30, 8),
+                (size.width * 0.55, 35, 10),
+                (size.width * 0.8, 25, 7),
+            ]
+            for d in driftPositions {
+                let drift = SKShapeNode(ellipseOf: CGSize(width: d.w, height: d.h))
+                drift.fillColor = SKColor(white: 1.0, alpha: 0.8)
+                drift.strokeColor = .clear
+                drift.position = CGPoint(x: d.x, y: 12 + d.h / 2)
+                container.addChild(drift)
+            }
+
+            container.zPosition = -6
+            scene.addChild(container)
+            midNodes.append(container)
+        }
+        parallax.addLayer(nodes: midNodes, speedMultiplier: 0.6, width: size.width)
+
+        // Animated: mini snowflakes
+        for _ in 0..<5 {
+            let snowflake = SKShapeNode(circleOfRadius: CGFloat.random(in: 0.5...1.5))
+            snowflake.fillColor = .white
+            snowflake.strokeColor = .clear
+            snowflake.position = CGPoint(
+                x: CGFloat.random(in: 0...size.width),
+                y: CGFloat.random(in: size.height * 0.5...size.height)
+            )
+            snowflake.zPosition = -4
+            snowflake.alpha = CGFloat.random(in: 0.5...1.0)
+            scene.addChild(snowflake)
+
+            let fall = SKAction.moveBy(
+                x: CGFloat.random(in: -10...10),
+                y: -(size.height + 10),
+                duration: TimeInterval.random(in: 6...12)
+            )
+            let reset = SKAction.run {
+                snowflake.position = CGPoint(
+                    x: CGFloat.random(in: 0...size.width),
+                    y: size.height + 5
+                )
+            }
+            snowflake.run(SKAction.repeatForever(SKAction.sequence([fall, reset])))
+        }
+    }
+
     // MARK: - Obstacle
 
     func buildObstacle(sceneHeight: CGFloat, gapCenterY: CGFloat, gapHeight: CGFloat, pipeWidth: CGFloat) -> SKNode {
