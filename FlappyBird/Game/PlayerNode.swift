@@ -36,6 +36,19 @@ class PlayerNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func startBobAnimation() {
+        let bobUp = SKAction.moveBy(x: 0, y: 12, duration: 0.4)
+        bobUp.timingMode = .easeInEaseOut
+        let bobDown = SKAction.moveBy(x: 0, y: -12, duration: 0.4)
+        bobDown.timingMode = .easeInEaseOut
+        let bobCycle = SKAction.sequence([bobUp, bobDown])
+        run(SKAction.repeatForever(bobCycle), withKey: "bob")
+    }
+
+    func stopBobAnimation() {
+        removeAction(forKey: "bob")
+    }
+
     func jump(impulse: CGFloat = 300) {
         guard isAlive else { return }
         // Set velocity directly instead of applyImpulse so behavior is consistent
