@@ -23,7 +23,7 @@ class TitleBackgroundScene: SKScene {
 
         let parallax = ParallaxBackground(baseSpeed: 20)
         let renderer = environment.renderer
-        renderer.buildPreviewBackground(scene: self, size: size, parallax: parallax)
+        renderer.buildBackground(scene: self, size: size, parallax: parallax)
 
         let groundHeight: CGFloat = size.height * 0.08
         let groundSize = CGSize(width: size.width, height: groundHeight)
