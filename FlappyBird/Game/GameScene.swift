@@ -7,6 +7,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var parallaxBackground: ParallaxBackground?
     var lastUpdateTime: TimeInterval = 0
     var isGameActive: Bool = false
+    var isReady: Bool = false
     private var isSetup: Bool = false
 
     // Tuning constants
@@ -67,15 +68,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPlayers()
         setupBackground()
         setupBoundaries()
-        startSpawning()
-        isGameActive = true
+
+        // Enter ready state: no gravity, no obstacles, players bob
+        isReady = true
+        isGameActive = false
+        for player in players {
+            player.startBobAnimation()
+        }
         AudioManager.shared.playEnvironmentMusic(for: router.config.environment)
     }
 
     // MARK: - Setup
 
     private func setupWorld() {
-        physicsWorld.gravity = CGVector(dx: 0, dy: gravity)
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
     }
 
@@ -157,10 +163,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(bottomBoundary)
     }
 
+    // MARK: - Ready → Active Transition
+
+    func activateGameplay() {
+        guard isReady else { return }
+        isReady = false
+        isGameActive = true
+
+        physicsWorld.gravity = CGVector(dx: 0, dy: gravity)
+
+        for player in players {
+            player.stopBobAnimation()
+        }
+
+        startSpawning()
+    }
+
     // MARK: - Update Loop
 
     override func update(_ currentTime: TimeInterval) {
-        guard isGameActive else { return }
+        guard isGameActive || isReady else { return }
 
         if lastUpdateTime == 0 {
             lastUpdateTime = currentTime
@@ -169,6 +191,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lastUpdateTime = currentTime
 
         parallaxBackground?.update(deltaTime: dt)
+
+        guard isGameActive else { return }
 
         // Lock player X positions
         for player in players {
