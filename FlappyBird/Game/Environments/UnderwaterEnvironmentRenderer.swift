@@ -197,7 +197,10 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
             // Bumpy coral edges
             for _ in 0..<5 {
                 let bumpRadius = CGFloat.random(in: 6...10)
-                let bumpY = CGFloat.random(in: gapTop + bumpRadius...sceneHeight - bumpRadius)
+                let bumpLow = gapTop + bumpRadius
+                let bumpHigh = sceneHeight - bumpRadius
+                guard bumpLow <= bumpHigh else { continue }
+                let bumpY = CGFloat.random(in: bumpLow...bumpHigh)
                 let side: CGFloat = Bool.random() ? 1 : -1
                 let bump = SKShapeNode(circleOfRadius: bumpRadius)
                 bump.fillColor = coralColor
@@ -214,7 +217,7 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
                 barnacle.strokeColor = .clear
                 barnacle.position = CGPoint(
                     x: CGFloat.random(in: -pipeWidth / 3...pipeWidth / 3),
-                    y: CGFloat.random(in: gapTop + 10...max(gapTop + 11, sceneHeight - 10))
+                    y: CGFloat.random(in: gapTop + 10...max(gapTop + 10, sceneHeight - 10))
                 )
                 container.addChild(barnacle)
             }
@@ -252,7 +255,10 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
             // Bumpy coral edges
             for _ in 0..<4 {
                 let bumpRadius = CGFloat.random(in: 6...10)
-                let bumpY = CGFloat.random(in: bumpRadius...max(bumpRadius + 1, gapBottom - bumpRadius))
+                let bumpLow = bumpRadius
+                let bumpHigh = gapBottom - bumpRadius
+                guard bumpLow <= bumpHigh else { continue }
+                let bumpY = CGFloat.random(in: bumpLow...bumpHigh)
                 let side: CGFloat = Bool.random() ? 1 : -1
                 let bump = SKShapeNode(circleOfRadius: bumpRadius)
                 bump.fillColor = coralColor
