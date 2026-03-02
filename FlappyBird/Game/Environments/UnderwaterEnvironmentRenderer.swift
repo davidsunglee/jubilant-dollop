@@ -87,6 +87,88 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
         }
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = SKColor(red: 0.05, green: 0.1, blue: 0.4, alpha: 1)
+
+        // Far layer: mini swaying seaweed (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            for j in 0..<3 {
+                let seaweedHeight = CGFloat.random(in: 18...40)
+                let seaweed = SKShapeNode(rectOf: CGSize(width: 2.5, height: seaweedHeight), cornerRadius: 1)
+                seaweed.fillColor = SKColor(red: 0.1, green: CGFloat.random(in: 0.4...0.6), blue: 0.15, alpha: 0.7)
+                seaweed.strokeColor = .clear
+                seaweed.position = CGPoint(
+                    x: CGFloat(j) * size.width / 2 + CGFloat.random(in: 0...15),
+                    y: 8 + seaweedHeight / 2
+                )
+                container.addChild(seaweed)
+
+                let swayRight = SKAction.rotate(byAngle: 0.08, duration: TimeInterval.random(in: 1.5...2.5))
+                let swayLeft = SKAction.rotate(byAngle: -0.08, duration: TimeInterval.random(in: 1.5...2.5))
+                seaweed.run(SKAction.repeatForever(SKAction.sequence([swayRight, swayLeft, swayLeft, swayRight])))
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Mid layer: mini light rays (0.6x)
+        var midNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            for j in 0..<2 {
+                let rayPath = CGMutablePath()
+                let baseX = CGFloat(j) * size.width / 1.5 + CGFloat.random(in: 10...25)
+                rayPath.move(to: CGPoint(x: baseX, y: size.height))
+                rayPath.addLine(to: CGPoint(x: baseX - 10, y: 0))
+                rayPath.addLine(to: CGPoint(x: baseX + 5, y: 0))
+                rayPath.addLine(to: CGPoint(x: baseX + 8, y: size.height))
+                rayPath.closeSubpath()
+
+                let ray = SKShapeNode(path: rayPath)
+                ray.fillColor = SKColor(white: 1.0, alpha: 0.06)
+                ray.strokeColor = .clear
+                container.addChild(ray)
+            }
+
+            container.zPosition = -6
+            scene.addChild(container)
+            midNodes.append(container)
+        }
+        parallax.addLayer(nodes: midNodes, speedMultiplier: 0.6, width: size.width)
+
+        // Animated: mini bubbles
+        for _ in 0..<3 {
+            let bubble = SKShapeNode(circleOfRadius: CGFloat.random(in: 1...3))
+            bubble.fillColor = SKColor(white: 1.0, alpha: 0.4)
+            bubble.strokeColor = SKColor(white: 1.0, alpha: 0.6)
+            bubble.lineWidth = 0.3
+            bubble.position = CGPoint(
+                x: CGFloat.random(in: 0...size.width),
+                y: CGFloat.random(in: 0...size.height * 0.3)
+            )
+            bubble.zPosition = -4
+            scene.addChild(bubble)
+
+            let floatUp = SKAction.moveBy(x: CGFloat.random(in: -5...5), y: size.height + 10, duration: TimeInterval.random(in: 5...10))
+            let reset = SKAction.run {
+                bubble.position = CGPoint(
+                    x: CGFloat.random(in: 0...size.width),
+                    y: -5
+                )
+            }
+            bubble.run(SKAction.repeatForever(SKAction.sequence([floatUp, reset])))
+        }
+    }
+
     // MARK: - Obstacle
 
     func buildObstacle(sceneHeight: CGFloat, gapCenterY: CGFloat, gapHeight: CGFloat, pipeWidth: CGFloat) -> SKNode {
@@ -115,7 +197,10 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
             // Bumpy coral edges
             for _ in 0..<5 {
                 let bumpRadius = CGFloat.random(in: 6...10)
-                let bumpY = CGFloat.random(in: gapTop + bumpRadius...sceneHeight - bumpRadius)
+                let bumpLow = gapTop + bumpRadius
+                let bumpHigh = sceneHeight - bumpRadius
+                guard bumpLow <= bumpHigh else { continue }
+                let bumpY = CGFloat.random(in: bumpLow...bumpHigh)
                 let side: CGFloat = Bool.random() ? 1 : -1
                 let bump = SKShapeNode(circleOfRadius: bumpRadius)
                 bump.fillColor = coralColor
@@ -132,7 +217,7 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
                 barnacle.strokeColor = .clear
                 barnacle.position = CGPoint(
                     x: CGFloat.random(in: -pipeWidth / 3...pipeWidth / 3),
-                    y: CGFloat.random(in: gapTop + 10...max(gapTop + 11, sceneHeight - 10))
+                    y: CGFloat.random(in: gapTop + 10...max(gapTop + 10, sceneHeight - 10))
                 )
                 container.addChild(barnacle)
             }
@@ -170,7 +255,10 @@ class UnderwaterEnvironmentRenderer: EnvironmentRenderer {
             // Bumpy coral edges
             for _ in 0..<4 {
                 let bumpRadius = CGFloat.random(in: 6...10)
-                let bumpY = CGFloat.random(in: bumpRadius...max(bumpRadius + 1, gapBottom - bumpRadius))
+                let bumpLow = bumpRadius
+                let bumpHigh = gapBottom - bumpRadius
+                guard bumpLow <= bumpHigh else { continue }
+                let bumpY = CGFloat.random(in: bumpLow...bumpHigh)
                 let side: CGFloat = Bool.random() ? 1 : -1
                 let bump = SKShapeNode(circleOfRadius: bumpRadius)
                 bump.fillColor = coralColor

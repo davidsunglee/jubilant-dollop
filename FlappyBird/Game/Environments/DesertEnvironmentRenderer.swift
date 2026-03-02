@@ -63,6 +63,89 @@ class DesertEnvironmentRenderer: EnvironmentRenderer {
         parallax.addLayer(nodes: midNodes, speedMultiplier: 0.6, width: size.width)
     }
 
+    func buildPreviewBackground(scene: SKScene, size: CGSize, parallax: ParallaxBackground) {
+        scene.backgroundColor = .systemYellow
+
+        // Far layer: mini sand dunes with heat shimmer (0.3x)
+        var farNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            let dunes: [(x: CGFloat, w: CGFloat, h: CGFloat)] = [
+                (size.width * 0.2, 45, 14),
+                (size.width * 0.5, 55, 18),
+                (size.width * 0.8, 40, 12),
+            ]
+            for d in dunes {
+                let dune = SKShapeNode(ellipseOf: CGSize(width: d.w, height: d.h))
+                dune.fillColor = SKColor(red: 0.85, green: 0.75, blue: 0.5, alpha: 1)
+                dune.strokeColor = SKColor(red: 0.8, green: 0.7, blue: 0.45, alpha: 1)
+                dune.lineWidth = 0.5
+                dune.position = CGPoint(x: d.x, y: 8 + d.h * 0.3)
+                container.addChild(dune)
+            }
+
+            container.zPosition = -8
+            scene.addChild(container)
+            farNodes.append(container)
+
+            // Heat shimmer
+            let shimmerUp = SKAction.moveBy(x: 0, y: 1.5, duration: 2.0)
+            let shimmerDown = SKAction.moveBy(x: 0, y: -1.5, duration: 2.0)
+            shimmerUp.timingMode = .easeInEaseOut
+            shimmerDown.timingMode = .easeInEaseOut
+            container.run(SKAction.repeatForever(SKAction.sequence([shimmerUp, shimmerDown])))
+        }
+        parallax.addLayer(nodes: farNodes, speedMultiplier: 0.3, width: size.width)
+
+        // Mid layer: mini cacti (0.6x)
+        var midNodes: [SKNode] = []
+        for i in 0..<2 {
+            let container = SKNode()
+            container.position = CGPoint(x: CGFloat(i) * size.width, y: 0)
+
+            for j in 0..<2 {
+                let cactus = buildMiniCactus()
+                cactus.position = CGPoint(
+                    x: CGFloat(j) * size.width / 1.5 + CGFloat.random(in: 10...30),
+                    y: 14
+                )
+                container.addChild(cactus)
+            }
+
+            container.zPosition = -6
+            scene.addChild(container)
+            midNodes.append(container)
+        }
+        parallax.addLayer(nodes: midNodes, speedMultiplier: 0.6, width: size.width)
+    }
+
+    private func buildMiniCactus() -> SKNode {
+        let cactus = SKNode()
+        let cactusColor = SKColor(red: 0.15, green: 0.45, blue: 0.1, alpha: 0.8)
+
+        let trunk = SKShapeNode(rectOf: CGSize(width: 4, height: 14), cornerRadius: 1)
+        trunk.fillColor = cactusColor
+        trunk.strokeColor = .clear
+        trunk.position = CGPoint(x: 0, y: 7)
+        cactus.addChild(trunk)
+
+        let leftArm = SKShapeNode(rectOf: CGSize(width: 3, height: 7), cornerRadius: 1)
+        leftArm.fillColor = cactusColor
+        leftArm.strokeColor = .clear
+        leftArm.position = CGPoint(x: -5, y: 10)
+        cactus.addChild(leftArm)
+
+        let rightArm = SKShapeNode(rectOf: CGSize(width: 3, height: 5), cornerRadius: 1)
+        rightArm.fillColor = cactusColor
+        rightArm.strokeColor = .clear
+        rightArm.position = CGPoint(x: 5, y: 9)
+        cactus.addChild(rightArm)
+
+        return cactus
+    }
+
     private func buildCactus() -> SKNode {
         let cactus = SKNode()
         let cactusColor = SKColor(red: 0.15, green: 0.45, blue: 0.1, alpha: 0.8)
