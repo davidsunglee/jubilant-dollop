@@ -7,6 +7,11 @@ struct CharacterSelectionView: View {
     @State private var player2Selection: GameCharacter = .bat
     @State private var headerVisible = false
     @State private var cardsVisible = false
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var isCompact2P: Bool {
+        horizontalSizeClass == .compact && router.config.playerCount == 2
+    }
 
     var body: some View {
         ZStack {
