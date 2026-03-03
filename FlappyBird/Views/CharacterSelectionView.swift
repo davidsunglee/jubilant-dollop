@@ -52,7 +52,7 @@ struct CharacterSelectionView: View {
             }
             .padding()
             .safeAreaPadding()
-            .padding(.top, isCompact2P ? 24 : 0)
+            .padding(.top, isCompact2P ? 36 : 0)
             .padding(.bottom, isCompact2P ? 12 : 0)
 
             // Back button
@@ -65,7 +65,7 @@ struct CharacterSelectionView: View {
                 Spacer()
             }
             .safeAreaPadding(.top)
-            .padding(.top, isCompact2P ? 8 : 0)
+            .padding(.top, isCompact2P ? 36 : 0)
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .characterSelection)
