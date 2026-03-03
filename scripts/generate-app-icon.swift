@@ -39,8 +39,8 @@ struct RGBA {
     var cgColor: CGColor { CGColor(red: r, green: g, blue: b, alpha: a) }
 }
 
-let gradientTop = RGBA(r: 0.831, g: 0.933, b: 1.0, a: 1)       // #D4EEFF
-let gradientBottom = RGBA(r: 0.992, g: 0.910, b: 0.816, a: 1)   // #FDE8D0
+let gradientTop = RGBA(r: 0.353, g: 0.678, b: 0.867, a: 1)      // #5AADDD richer sky
+let gradientBottom = RGBA(r: 0.961, g: 0.753, b: 0.541, a: 1)   // #F5C08A warm amber horizon
 let birdYellow = RGBA(r: 1.0, g: 1.0, b: 0.0, a: 1)             // yellow
 let birdOrange = RGBA(r: 1.0, g: 0.647, b: 0.0, a: 1)           // orange
 let bellyColor = RGBA(r: 1.0, g: 1.0, b: 0.8, a: 1)             // cream
@@ -93,8 +93,8 @@ func drawIcon(size: CGFloat) -> CGImage? {
     ctx.drawLinearGradient(gradient, start: CGPoint(x: 512, y: 1024), end: CGPoint(x: 512, y: 0), options: [])
 
     // -- Bird setup --
-    let birdScale: CGFloat = 15.0
-    let cx: CGFloat = 490   // slightly left of center (beak extends right)
+    let birdScale: CGFloat = 18.0
+    let cx: CGFloat = 460   // shifted further left to give trail room
     let cy: CGFloat = 512   // vertical center
 
     ctx.saveGState()
