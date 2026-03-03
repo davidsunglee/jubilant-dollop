@@ -44,6 +44,8 @@ struct CharacterSelectionView: View {
                     router.confirmCharacterSelection()
                 } label: {
                     Text("Continue")
+                        .font(isCompact2P ? .headline.bold() : .title2.bold())
+                        .frame(height: isCompact2P ? 44 : 50)
                 }
                 .buttonStyle(GlassButtonStyle(accentColor: .green))
                 .opacity(cardsVisible ? 1 : 0)
