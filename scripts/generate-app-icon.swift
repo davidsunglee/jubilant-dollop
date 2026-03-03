@@ -92,6 +92,22 @@ func drawIcon(size: CGFloat) -> CGImage? {
     // CoreGraphics origin is bottom-left, so bottom color at y=0, top at y=1024
     ctx.drawLinearGradient(gradient, start: CGPoint(x: 512, y: 1024), end: CGPoint(x: 512, y: 0), options: [])
 
+    // -- Motion trail (drawn before bird so bird overlaps) --
+    // Three elongated ellipses trailing left of the bird's body.
+    // Bird center is at (460, 512). Body radius = 13 × 18 = 234px.
+    // Left edge of bird body ≈ 460 - 234 = 226px.
+    // Trail ellipses are centered on the bird's vertical midline (y=512).
+    let trailYellow = RGBA(r: 1.0, g: 1.0, b: 0.0, a: 0.40)   // 40% opacity
+    let trailYellow2 = RGBA(r: 1.0, g: 1.0, b: 0.0, a: 0.25)  // 25% opacity
+    let trailYellow3 = RGBA(r: 1.0, g: 1.0, b: 0.0, a: 0.12)  // 12% opacity
+
+    // Trail 1: closest, 85×55px, starts just off the left edge of the body
+    fillEllipse(ctx, center: CGPoint(x: 178, y: 512), size: CGSize(width: 85, height: 55), fill: trailYellow)
+    // Trail 2: middle, 60×40px, ~80px further left
+    fillEllipse(ctx, center: CGPoint(x: 98, y: 512), size: CGSize(width: 60, height: 40), fill: trailYellow2)
+    // Trail 3: farthest, 40×26px, ~70px further left
+    fillEllipse(ctx, center: CGPoint(x: 28, y: 512), size: CGSize(width: 40, height: 26), fill: trailYellow3)
+
     // -- Bird setup --
     let birdScale: CGFloat = 18.0
     let cx: CGFloat = 460   // shifted further left to give trail room
