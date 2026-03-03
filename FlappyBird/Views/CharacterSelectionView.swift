@@ -44,6 +44,7 @@ struct CharacterSelectionView: View {
                 .opacity(cardsVisible ? 1 : 0)
             }
             .padding()
+            .safeAreaPadding()
 
             // Back button
             VStack {
@@ -54,6 +55,7 @@ struct CharacterSelectionView: View {
                 .padding()
                 Spacer()
             }
+            .safeAreaPadding(.top)
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .characterSelection)
