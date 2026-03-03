@@ -17,9 +17,9 @@ struct CharacterSelectionView: View {
         ZStack {
             MenuBackgroundView(tint: .cool)
 
-            VStack(spacing: 20) {
+            VStack(spacing: isCompact2P ? 12 : 20) {
                 Text("Select Character\(router.config.playerCount == 2 ? "s" : "")")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .font(.system(size: isCompact2P ? 28 : 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.primary)
                     .offset(y: headerVisible ? 0 : -15)
                     .opacity(headerVisible ? 1 : 0)
