@@ -7,23 +7,28 @@ struct CharacterSelectionView: View {
     @State private var player2Selection: GameCharacter = .bat
     @State private var headerVisible = false
     @State private var cardsVisible = false
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var isCompact2P: Bool {
+        horizontalSizeClass == .compact && router.config.playerCount == 2
+    }
 
     var body: some View {
         ZStack {
             MenuBackgroundView(tint: .cool)
 
-            VStack(spacing: 20) {
+            VStack(spacing: isCompact2P ? 6 : 20) {
                 Text("Select Character\(router.config.playerCount == 2 ? "s" : "")")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .font(.system(size: isCompact2P ? 28 : 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.primary)
                     .offset(y: headerVisible ? 0 : -15)
                     .opacity(headerVisible ? 1 : 0)
 
                 if router.config.playerCount == 2 {
                     HStack(spacing: 30) {
-                        characterPicker(title: "Player 1", selection: $player1Selection)
+                        characterPicker(title: "Player 1", selection: $player1Selection, compact: isCompact2P)
                         Divider().frame(height: 300)
-                        characterPicker(title: "Player 2", selection: $player2Selection)
+                        characterPicker(title: "Player 2", selection: $player2Selection, compact: isCompact2P)
                     }
                     .opacity(cardsVisible ? 1 : 0)
                 } else {
@@ -39,11 +44,16 @@ struct CharacterSelectionView: View {
                     router.confirmCharacterSelection()
                 } label: {
                     Text("Continue")
+                        .font(isCompact2P ? .headline.bold() : .title2.bold())
+                        .frame(height: isCompact2P ? 44 : 50)
                 }
                 .buttonStyle(GlassButtonStyle(accentColor: .green))
                 .opacity(cardsVisible ? 1 : 0)
             }
             .padding()
+            .safeAreaPadding()
+            .padding(.top, isCompact2P ? 52 : 0)
+            .padding(.bottom, isCompact2P ? 24 : 0)
 
             // Back button
             VStack {
@@ -54,6 +64,8 @@ struct CharacterSelectionView: View {
                 .padding()
                 Spacer()
             }
+            .safeAreaPadding(.top)
+            .padding(.top, isCompact2P ? 52 : 0)
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .characterSelection)
@@ -70,10 +82,10 @@ struct CharacterSelectionView: View {
         }
     }
 
-    private func characterPicker(title: String, selection: Binding<GameCharacter>) -> some View {
-        VStack(spacing: 12) {
+    private func characterPicker(title: String, selection: Binding<GameCharacter>, compact: Bool = false) -> some View {
+        VStack(spacing: compact ? 8 : 12) {
             Text(title)
-                .font(.title3.bold())
+                .font(compact ? .footnote.bold() : .title3.bold())
 
             LazyVGrid(columns: [
                 GridItem(.flexible()),
@@ -81,7 +93,7 @@ struct CharacterSelectionView: View {
                 GridItem(.flexible())
             ], spacing: 12) {
                 ForEach(GameCharacter.allCases) { character in
-                    characterCard(character: character, isSelected: selection.wrappedValue == character)
+                    characterCard(character: character, isSelected: selection.wrappedValue == character, size: compact ? 84 : 100, compact: compact)
                         .onTapGesture {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                 selection.wrappedValue = character
@@ -93,16 +105,17 @@ struct CharacterSelectionView: View {
         }
     }
 
-    private func characterCard(character: GameCharacter, isSelected: Bool) -> some View {
-        VStack(spacing: 6) {
+    private func characterCard(character: GameCharacter, isSelected: Bool, size: CGFloat = 100, compact: Bool = false) -> some View {
+        VStack(spacing: compact ? 2 : 6) {
             LiveCharacterPreview(character: character, isSelected: isSelected)
+                .offset(y: compact ? 4 : 0)
 
             Text(character.displayName)
-                .font(.caption.bold())
+                .font(compact ? .system(size: 9, weight: .bold) : .caption.bold())
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
         }
-        .frame(width: 100, height: 100)
+        .frame(width: size, height: size)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
