@@ -17,7 +17,7 @@ struct CharacterSelectionView: View {
         ZStack {
             MenuBackgroundView(tint: .cool)
 
-            VStack(spacing: isCompact2P ? 12 : 20) {
+            VStack(spacing: isCompact2P ? 6 : 20) {
                 Text("Select Character\(router.config.playerCount == 2 ? "s" : "")")
                     .font(.system(size: isCompact2P ? 28 : 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.primary)
@@ -52,6 +52,8 @@ struct CharacterSelectionView: View {
             }
             .padding()
             .safeAreaPadding()
+            .padding(.top, isCompact2P ? 24 : 0)
+            .padding(.bottom, isCompact2P ? 12 : 0)
 
             // Back button
             VStack {
@@ -63,6 +65,7 @@ struct CharacterSelectionView: View {
                 Spacer()
             }
             .safeAreaPadding(.top)
+            .padding(.top, isCompact2P ? 8 : 0)
         }
         .onAppear {
             AudioManager.shared.playMenuMusic(forState: .characterSelection)
@@ -90,7 +93,7 @@ struct CharacterSelectionView: View {
                 GridItem(.flexible())
             ], spacing: 12) {
                 ForEach(GameCharacter.allCases) { character in
-                    characterCard(character: character, isSelected: selection.wrappedValue == character, size: compact ? 84 : 100)
+                    characterCard(character: character, isSelected: selection.wrappedValue == character, size: compact ? 84 : 100, compact: compact)
                         .onTapGesture {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                 selection.wrappedValue = character
@@ -102,12 +105,13 @@ struct CharacterSelectionView: View {
         }
     }
 
-    private func characterCard(character: GameCharacter, isSelected: Bool, size: CGFloat = 100) -> some View {
-        VStack(spacing: 6) {
+    private func characterCard(character: GameCharacter, isSelected: Bool, size: CGFloat = 100, compact: Bool = false) -> some View {
+        VStack(spacing: compact ? 2 : 6) {
             LiveCharacterPreview(character: character, isSelected: isSelected)
+                .offset(y: compact ? 4 : 0)
 
             Text(character.displayName)
-                .font(.caption.bold())
+                .font(compact ? .system(size: 9, weight: .bold) : .caption.bold())
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
         }
