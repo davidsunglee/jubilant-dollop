@@ -26,9 +26,9 @@ struct CharacterSelectionView: View {
 
                 if router.config.playerCount == 2 {
                     HStack(spacing: 30) {
-                        characterPicker(title: "Player 1", selection: $player1Selection)
+                        characterPicker(title: "Player 1", selection: $player1Selection, compact: isCompact2P)
                         Divider().frame(height: 300)
-                        characterPicker(title: "Player 2", selection: $player2Selection)
+                        characterPicker(title: "Player 2", selection: $player2Selection, compact: isCompact2P)
                     }
                     .opacity(cardsVisible ? 1 : 0)
                 } else {
@@ -77,10 +77,10 @@ struct CharacterSelectionView: View {
         }
     }
 
-    private func characterPicker(title: String, selection: Binding<GameCharacter>) -> some View {
-        VStack(spacing: 12) {
+    private func characterPicker(title: String, selection: Binding<GameCharacter>, compact: Bool = false) -> some View {
+        VStack(spacing: compact ? 8 : 12) {
             Text(title)
-                .font(.title3.bold())
+                .font(compact ? .footnote.bold() : .title3.bold())
 
             LazyVGrid(columns: [
                 GridItem(.flexible()),
@@ -88,7 +88,7 @@ struct CharacterSelectionView: View {
                 GridItem(.flexible())
             ], spacing: 12) {
                 ForEach(GameCharacter.allCases) { character in
-                    characterCard(character: character, isSelected: selection.wrappedValue == character)
+                    characterCard(character: character, isSelected: selection.wrappedValue == character, size: compact ? 84 : 100)
                         .onTapGesture {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                 selection.wrappedValue = character
@@ -100,7 +100,7 @@ struct CharacterSelectionView: View {
         }
     }
 
-    private func characterCard(character: GameCharacter, isSelected: Bool) -> some View {
+    private func characterCard(character: GameCharacter, isSelected: Bool, size: CGFloat = 100) -> some View {
         VStack(spacing: 6) {
             LiveCharacterPreview(character: character, isSelected: isSelected)
 
@@ -109,7 +109,7 @@ struct CharacterSelectionView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
         }
-        .frame(width: 100, height: 100)
+        .frame(width: size, height: size)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
