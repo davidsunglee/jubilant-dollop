@@ -93,8 +93,8 @@ func drawIcon(size: CGFloat) -> CGImage? {
     ctx.drawLinearGradient(gradient, start: CGPoint(x: 512, y: 1024), end: CGPoint(x: 512, y: 0), options: [])
 
     // -- Bird setup --
-    let birdScale: CGFloat = 15.0
-    let cx: CGFloat = 490   // slightly left of center (beak extends right)
+    let birdScale: CGFloat = 18.0
+    let cx: CGFloat = 460   // shifted further left to give trail room
     let cy: CGFloat = 512   // vertical center
 
     ctx.saveGState()
