@@ -121,9 +121,10 @@ struct CharacterSelectionView: View {
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.clear, lineWidth: 0)
+                .stroke(isSelected ? Color.blue.opacity(0.6) : Color.clear, lineWidth: 2.5)
         )
-        .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.clear, radius: 12)
+        .shadow(color: isSelected ? Color.blue.opacity(0.5) : Color.clear, radius: 16)
         .scaleEffect(isSelected ? 1.05 : 1.0)
+        .opacity(isSelected ? 1.0 : 0.7)
     }
 }
