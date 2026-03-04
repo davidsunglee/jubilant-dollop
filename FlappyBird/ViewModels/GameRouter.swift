@@ -72,6 +72,13 @@ class GameRouter: ObservableObject {
         }
     }
 
+    func forceKillPlayer(_ player: Int) {
+        guard player >= 1 && player <= 2 else { return }
+        let index = player - 1
+        lives[index] = 0
+        playerDied(player)
+    }
+
     func playerDied(_ player: Int) {
         guard player >= 1 && player <= 2 else { return }
         playerAlive[player - 1] = false
