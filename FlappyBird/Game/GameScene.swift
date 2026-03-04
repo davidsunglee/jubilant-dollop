@@ -210,6 +210,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let rotation = max(-0.5, min(0.5, vy / 500))
                 player.zRotation = rotation
             }
+
+            // Hard ceiling: clamp to top of screen
+            let topMargin = player.character.physicsBodySize.height / 2
+            let maxY = size.height - topMargin
+            if player.position.y > maxY {
+                player.position.y = maxY
+                if let vy = player.physicsBody?.velocity.dy, vy > 0 {
+                    player.physicsBody?.velocity.dy = 0
+                }
+            }
+
+            // Kill player if they fall to ground level (bypasses invincibility)
+            let groundHeight: CGFloat = 40
+            if player.position.y < groundHeight {
+                player.die()
+                AudioManager.shared.playCollisionSound()
+                router.forceKillPlayer(player.playerIndex)
+
+                // Check if all players dead
+                if players.allSatisfy({ !$0.isAlive }) {
+                    isGameActive = false
+                    removeAllActions()
+                    scoredPipes.removeAll()
+                    AudioManager.shared.stopMusic()
+                }
+            }
         }
     }
 
