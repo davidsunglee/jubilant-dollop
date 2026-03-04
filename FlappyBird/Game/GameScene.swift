@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let jumpImpulse: CGFloat = 300
 
     // Scored pipe tracking (to prevent double-counting)
-    var scoredPipes: Set<SKNode> = []
+    var scoredPipes: [Int: Set<SKNode>] = [:]
 
     // MARK: - Init
 
@@ -239,8 +239,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if otherCategory == PhysicsCategory.scoreZone {
             // Score!
             let scoreNode = (categoryA == PhysicsCategory.scoreZone) ? bodyA.node : bodyB.node
-            guard let scoreNode = scoreNode, !scoredPipes.contains(scoreNode) else { return }
-            scoredPipes.insert(scoreNode)
+            guard let scoreNode = scoreNode else { return }
+            guard !(scoredPipes[playerNode.playerIndex]?.contains(scoreNode) ?? false) else { return }
+            scoredPipes[playerNode.playerIndex, default: []].insert(scoreNode)
 
             DispatchQueue.main.async { [weak self] in
                 self?.router.incrementScore(forPlayer: playerNode.playerIndex)
