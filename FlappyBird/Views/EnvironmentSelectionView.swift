@@ -78,8 +78,13 @@ struct EnvironmentSelectionView: View {
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
-        .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.clear, radius: 12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(isSelected ? Color.blue.opacity(0.6) : Color.clear, lineWidth: 2.5)
+        )
+        .shadow(color: isSelected ? Color.blue.opacity(0.5) : Color.clear, radius: 16)
         .scaleEffect(isSelected ? 1.05 : 1.0)
+        .opacity(isSelected ? 1.0 : 0.7)
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
     }
 }
