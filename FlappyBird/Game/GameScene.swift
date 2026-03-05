@@ -92,7 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let p1 = PlayerNode(playerIndex: 1, character: config.player1Character)
         let p1X: CGFloat
         if config.playerCount == 2 {
-            p1X = size.width * 0.25
+            p1X = size.width * 0.35
         } else {
             p1X = size.width * 0.3
         }
@@ -103,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Player 2 (if 2P mode)
         if config.playerCount == 2 {
             let p2 = PlayerNode(playerIndex: 2, character: config.player2Character)
-            p2.position = CGPoint(x: size.width * 0.75, y: size.height * 0.5)
+            p2.position = CGPoint(x: size.width * 0.65, y: size.height * 0.5)
             addChild(p2)
             players.append(p2)
 
@@ -199,7 +199,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             guard player.isAlive else { continue }
             let targetX: CGFloat
             if router.config.playerCount == 2 {
-                targetX = player.playerIndex == 1 ? size.width * 0.25 : size.width * 0.75
+                targetX = player.playerIndex == 1 ? size.width * 0.35 : size.width * 0.65
             } else {
                 targetX = size.width * 0.3
             }
