@@ -215,12 +215,7 @@ class DesertEnvironmentRenderer: EnvironmentRenderer {
                 seg.position = CGPoint(x: 0, y: gapTop + CGFloat(s) * segmentHeight + segmentHeight / 2)
                 seg.name = "obstacle"
                 if s == 0 {
-                    seg.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: pipeWidth, height: topHeight))
-                    seg.physicsBody?.isDynamic = false
-                    seg.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-                    seg.physicsBody?.contactTestBitMask = PhysicsCategory.player
-                    seg.physicsBody?.collisionBitMask = PhysicsCategory.player
-                    // Position physics body to cover full column
+                    // Single physics body covering full column
                     let bodyNode = SKNode()
                     bodyNode.position = CGPoint(x: 0, y: gapTop + topHeight / 2)
                     bodyNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: pipeWidth, height: topHeight))
