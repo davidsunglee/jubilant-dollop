@@ -17,6 +17,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let pipeWidth: CGFloat = 60
     let gapHeight: CGFloat = 180
     let jumpImpulse: CGFloat = 300
+    let player1XPosition: CGFloat = 0.35
+    let player2XPosition: CGFloat = 0.65
+    let singlePlayerXPosition: CGFloat = 0.3
 
     // Scored pipe tracking (to prevent double-counting)
     var scoredPipes: [Int: Set<SKNode>] = [:]
@@ -92,9 +95,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let p1 = PlayerNode(playerIndex: 1, character: config.player1Character)
         let p1X: CGFloat
         if config.playerCount == 2 {
-            p1X = size.width * 0.25
+            p1X = size.width * player1XPosition
         } else {
-            p1X = size.width * 0.3
+            p1X = size.width * singlePlayerXPosition
         }
         p1.position = CGPoint(x: p1X, y: size.height * 0.5)
         addChild(p1)
@@ -103,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Player 2 (if 2P mode)
         if config.playerCount == 2 {
             let p2 = PlayerNode(playerIndex: 2, character: config.player2Character)
-            p2.position = CGPoint(x: size.width * 0.75, y: size.height * 0.5)
+            p2.position = CGPoint(x: size.width * player2XPosition, y: size.height * 0.5)
             addChild(p2)
             players.append(p2)
 
@@ -199,9 +202,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             guard player.isAlive else { continue }
             let targetX: CGFloat
             if router.config.playerCount == 2 {
-                targetX = player.playerIndex == 1 ? size.width * 0.25 : size.width * 0.75
+                targetX = player.playerIndex == 1 ? size.width * player1XPosition : size.width * player2XPosition
             } else {
-                targetX = size.width * 0.3
+                targetX = size.width * singlePlayerXPosition
             }
             player.position.x = targetX
 
